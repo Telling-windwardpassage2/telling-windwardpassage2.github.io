@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SymptomCanvas</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080d1a;
+    color:#ffffff;
+    min-height:100vh;
+}
+
+header{
+    height:75px;
+    padding:0 5%;
+    border-bottom:1px solid #20283b;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#6ee7ff;
+}
+
+header p{
+    color:#778198;
+    font-size:14px;
+}
+
+main{
+    width:94%;
+    max-width:1450px;
+    margin:25px auto;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:250px minmax(450px,1fr) 320px;
+    gap:18px;
+}
+
+.card{
+    background:#11182a;
+    border:1px solid #222c42;
+    border-radius:18px;
+    padding:18px;
+}
+
+h2{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+h3{
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+
+/* BODY PART BUTTONS */
+
+.parts{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.parts button{
+    width:100%;
+    padding:12px;
+    background:#182138;
+    border:1px solid #2b3650;
+    color:white;
+    border-radius:9px;
+    cursor:pointer;
+    text-align:left;
+    font-size:14px;
+    transition:.2s;
+}
+
+.parts button:hover{
+    background:#22304a;
+}
+
+.parts button.active{
+    background:#173b4c;
+    border-color:#6ee7ff;
+}
+
+
+/* LEGEND */
+
+.legend{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    margin-top:15px;
+}
+
+.legend div{
+    background:#182138;
+    border-radius:8px;
+    padding:8px;
+    font-size:13px;
+}
+
+.red{
+    color:#ff5364;
+}
+
+.black{
+    color:#d9dce4;
+}
+
+.blue{
+    color:#60e7ff;
+}
+
+.purple{
+    color:#bd82ff;
+}
+
+.yellow{
+    color:#ffd84d;
+}
+
+
+/* BODY AREA */
+
+.body-area{
+    width:100%;
+    height:580px;
+    background:#0b1120;
+    border:1px solid #222d45;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.body-svg{
+    width:100%;
+    height:100%;
+    max-width:600px;
+}
+
+.body-shape{
+    fill:#151f34;
+    stroke:#64728f;
+    stroke-width:3;
+}
+
+.body-detail{
+    fill:none;
+    stroke:#64728f;
+    stroke-width:2;
+}
+
+.body-title{
+    position:absolute;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#65718d;
+    font-size:13px;
+}
+
+
+/* DRAWING LAYER */
+
+.drawing-layer{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.drawing-layer.active{
+    pointer-events:auto;
+    cursor:crosshair;
+}
+
+
+/* TOOLS */
+
+.tools{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-top:12px;
+}
+
+.tools button{
+    height:40px;
+    background:#182138;
+    border:1px solid #2b3650;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.tools button:hover{
+    background:#26334e;
+}
+
+.tools button.active{
+    border-color:#6ee7ff;
+    background:#20384b;
+}
+
+
+/* FORM */
+
+label{
+    display:block;
+    font-size:13px;
+    color:#929db5;
+    margin-top:14px;
+    margin-bottom:6px;
+}
+
+input,
+select{
+    width:100%;
+    height:40px;
+    padding:0 11px;
+    background:#0c1322;
+    border:1px solid #2b3650;
+    border-radius:8px;
+    color:white;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#6ee7ff;
+}
+
+input[type="range"]{
+    padding:0;
+    accent-color:#6ee7ff;
+}
+
+
+/* SAVE */
+
+.save-btn{
+    width:100%;
+    height:43px;
+    margin-top:17px;
+    background:#6ee7ff;
+    color:#061019;
+    border:0;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.save-btn:hover{
+    background:#8cecff;
+}
+
+
+/* TIMELINE */
+
+.timeline{
+    max-height:360px;
+    overflow-y:auto;
+    padding-right:4px;
+}
+
+.timeline::-webkit-scrollbar{
+    width:5px;
+}
+
+.timeline::-webkit-scrollbar-thumb{
+    background:#34405b;
+    border-radius:10px;
+}
+
+.timeline-item{
+    border-left:3px solid #6ee7ff;
+    background:#182138;
+    border-radius:0 9px 9px 0;
+    padding:11px;
+    margin-bottom:10px;
+    font-size:13px;
+}
+
+.timeline-time{
+    color:#6ee7ff;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.timeline-item p{
+    color:#aeb7ca;
+    margin-top:4px;
+}
+
+.empty{
+    text-align:center;
+    color:#657089;
+    padding:30px 5px;
+}
+
+
+/* AI */
+
+.ai-box{
+    margin-top:15px;
+    background:#0c1322;
+    border:1px solid #26334d;
+    border-radius:11px;
+    padding:13px;
+    font-size:13px;
+    line-height:1.6;
+    color:#c1c9d9;
+}
+
+.ai-title{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#6ee7ff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.stat{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid #202a40;
+}
+
+.stat:last-child{
+    border-bottom:none;
+}
+
+.stat span:first-child{
+    color:#77839b;
+}
+
+.clear-history{
+    width:100%;
+    margin-top:10px;
+    padding:9px;
+    background:transparent;
+    border:1px solid #303b55;
+    border-radius:8px;
+    color:#8994aa;
+    cursor:pointer;
+}
+
+
+@media(max-width:1100px){
+
+    .grid{
+        grid-template-columns:220px 1fr;
+    }
+
+    .grid .card:last-child{
+        grid-column:1/-1;
+    }
+
+}
+
+
+@media(max-width:750px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .body-area{
+        height:500px;
+    }
+
+    .tools{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    header p{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+Symptom<span>Canvas</span>
+</div>
+
+<p>Visual symptom tracking • AI-assisted summary</p>
+
+</header>
+
+
+<main>
+
+<div class="grid">
+
+
+<!-- LEFT PANEL -->
+
+<section class="card">
+
+<h3>Body Area</h3>
+
+<div class="parts">
+
+<button class="active" onclick="selectPart('head',this)">
+🧠 Head
+</button>
+
+<button onclick="selectPart('neck',this)">
+🦴 Neck & Shoulders
+</button>
+
+<button onclick="selectPart('chest',this)">
+🫁 Chest
+</button>
+
+<button onclick="selectPart('abdomen',this)">
+🩺 Abdomen
+</button>
+
+<button onclick="selectPart('back',this)">
+🔙 Back
+</button>
+
+<button onclick="selectPart('arms',this)">
+💪 Arms
+</button>
+
+<button onclick="selectPart('legs',this)">
+🦵 Legs
+</button>
+
+<button onclick="selectPart('feet',this)">
+🦶 Feet
+</button>
+
+</div>
+
+
+<h3 style="margin-top:20px">
+Pain Legend
+</h3>
+
+<div class="legend">
+
+<div class="red">🔴 Severe pain</div>
+
+<div class="black">⚫ Deep pain</div>
+
+<div class="blue">🔵 Wave-like pain</div>
+
+<div class="purple">🟣 Pulsating</div>
+
+<div class="yellow">🟡 Burning</div>
+
+<div>• Tingling</div>
+
+<div>→ Radiation / spreading</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CENTER -->
+
+<section class="card">
+
+<h2 id="bodyTitle">
+Head
+</h2>
+
+
+<div class="body-area">
+
+<div class="body-title">
+Draw where you feel the symptom
+</div>
+
+
+<!-- HEAD -->
+
+<svg id="headSvg"
+class="body-svg"
+viewBox="0 0 500 560">
+
+<ellipse
+class="body-shape"
+cx="250"
+cy="270"
+rx="105"
+ry="135"/>
+
+<path
+class="body-detail"
+d="M250 135 L250 405"/>
+
+<path
+class="body-detail"
+d="M150 260 Q250 310 350 260"/>
+
+<circle
+cx="215"
+cy="255"
+r="5"
+fill="#64728f"/>
+
+<circle
+cx="285"
+cy="255"
+r="5"
+fill="#64728f"/>
+
+</svg>
+
+
+<!-- NECK -->
+
+<svg id="neckSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M190 120
+L310 120
+L330 190
+L420 230
+L385 360
+L115 360
+L80 230
+L170 190
+Z"/>
+
+<path
+class="body-detail"
+d="M190 120 L170 190"/>
+
+<path
+class="body-detail"
+d="M310 120 L330 190"/>
+
+<path
+class="body-detail"
+d="M170 190 Q250 230 330 190"/>
+
+</svg>
+
+
+<!-- CHEST -->
+
+<svg id="chestSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M180 90
+L320 90
+L400 180
+L360 430
+L140 430
+L100 180
+Z"/>
+
+<path
+class="body-detail"
+d="M250 90 L250 430"/>
+
+<ellipse
+class="body-detail"
+cx="200"
+cy="250"
+rx="55"
+ry="100"/>
+
+<ellipse
+class="body-detail"
+cx="300"
+cy="250"
+rx="55"
+ry="100"/>
+
+</svg>
+
+
+<!-- ABDOMEN -->
+
+<svg id="abdomenSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M170 80
+L330 80
+L380 150
+L355 450
+L145 450
+L120 150
+Z"/>
+
+<path
+class="body-detail"
+d="M250 85 L250 450"/>
+
+<path
+class="body-detail"
+d="M145 270 Q250 300 355 270"/>
+
+<ellipse
+class="body-detail"
+cx="205"
+cy="320"
+rx="45"
+ry="55"/>
+
+<ellipse
+class="body-detail"
+cx="295"
+cy="320"
+rx="45"
+ry="55"/>
+
+</svg>
+
+
+<!-- BACK -->
+
+<svg id="backSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M175 80
+L325 80
+L405 180
+L360 450
+L140 450
+L95 180
+Z"/>
+
+<path
+class="body-detail"
+d="M250 85 L250 450"/>
+
+<path
+class="body-detail"
+d="M175 150 Q250 200 325 150"/>
+
+<path
+class="body-detail"
+d="M145 300 Q250 350 355 300"/>
+
+</svg>
+
+
+<!-- ARMS -->
+
+<svg id="armsSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M165 80
+L230 110
+L180 230
+L135 450
+L75 450
+L100 210
+Z"/>
+
+<path
+class="body-shape"
+d="
+M335 80
+L270 110
+L320 230
+L365 450
+L425 450
+L400 210
+Z"/>
+
+<path
+class="body-detail"
+d="M110 210 L180 230"/>
+
+<path
+class="body-detail"
+d="M390 210 L320 230"/>
+
+</svg>
+
+
+<!-- LEGS -->
+
+<svg id="legsSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M145 70
+L235 70
+L240 280
+L220 480
+L125 480
+L145 280
+Z"/>
+
+<path
+class="body-shape"
+d="
+M265 70
+L355 70
+L375 280
+L395 480
+L300 480
+L280 280
+Z"/>
+
+<path
+class="body-detail"
+d="M145 280 L240 280"/>
+
+<path
+class="body-detail"
+d="M265 280 L355 280"/>
+
+</svg>
+
+
+<!-- FEET -->
+
+<svg id="feetSvg"
+class="body-svg"
+viewBox="0 0 500 560"
+style="display:none">
+
+<path
+class="body-shape"
+d="
+M150 90
+Q110 180 125 330
+Q130 450 210 470
+Q245 475 245 430
+L230 150
+Z"/>
+
+<path
+class="body-shape"
+d="
+M350 90
+Q390 180 375 330
+Q370 450 290 470
+Q255 475 255 430
+L270 150
+Z"/>
+
+<path
+class="body-detail"
+d="M145 350 Q180 390 220 360"/>
+
+<path
+class="body-detail"
+d="M355 350 Q320 390 280 360"/>
+
+</svg>
+
+
+<!-- DRAWING CANVAS -->
+
+<canvas
+id="drawingCanvas"
+class="drawing-layer active">
+</canvas>
+
+</div>
+
+
+<!-- TOOLS -->
+
+<div class="tools">
+
+<button
+class="active"
+onclick="setTool('red',this)">
+🔴
+</button>
+
+<button
+onclick="setTool('black',this)">
+⚫
+</button>
+
+<button
+onclick="setTool('blue',this)">
+🔵
+</button>
+
+<button
+onclick="setTool('purple',this)">
+🟣
+</button>
+
+<button
+onclick="setTool('yellow',this)">
+🟡
+</button>
+
+<button
+onclick="setTool('dot',this)">
+•
+</button>
+
+<button
+onclick="setTool('arrow',this)">
+→
+</button>
+
+<button
+onclick="setTool('wave',this)">
+~
+</button>
+
+<button onclick="clearDrawing()">
+⌫
+</button>
+
+<button onclick="resetDrawing()">
+↻
+</button>
+
+</div>
+
+
+<label>
+Pain Intensity:
+<strong>
+<span id="intensityValue">5</span>/10
+</strong>
+</label>
+
+<input
+type="range"
+min="1"
+max="10"
+value="5"
+id="intensity"
+oninput="changeIntensity(this.value)"
+>
+
+
+<label>
+Pain Type
+</label>
+
+<select id="painType">
+
+<option>Sharp</option>
+<option>Dull</option>
+<option>Pulsating</option>
+<option>Burning</option>
+<option>Stabbing</option>
+<option>Wave-like</option>
+<option>Pressure</option>
+
+</select>
+
+
+<label>
+Additional Notes
+</label>
+
+<input
+id="comment"
+placeholder="Example: radiates to the right leg"
+>
+
+
+<button
+class="save-btn"
+onclick="saveSymptom()">
+
+＋ Save Symptom
+
+</button>
+
+</section>
+
+
+
+<!-- RIGHT PANEL -->
+
+<section class="card">
+
+<h2>
+Symptom Timeline
+</h2>
+
+
+<div
+id="timeline"
+class="timeline">
+
+<div class="empty">
+
+No symptoms recorded yet.<br><br>
+
+Draw your symptom and save it.
+
+</div>
+
+</div>
+
+
+<button
+class="clear-history"
+onclick="clearHistory()">
+
+Clear History
+
+</button>
+
+
+<div class="ai-box">
+
+<div class="ai-title">
+🤖 AI Symptom Summary
+</div>
+
+<div id="summary">
+
+AI-assisted summary will appear after
+you save a symptom.
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+
+<script>
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+const canvas=
+document.getElementById("drawingCanvas");
+
+const ctx=
+canvas.getContext("2d");
+
+
+let currentPart="head";
+
+let currentTool="red";
+
+let intensity=5;
+
+let drawing=false;
+
+let lastX=0;
+
+let lastY=0;
+
+let symptoms=[];
+
+
+/* =========================
+   BODY NAMES
+========================= */
+
+const partNames={
+
+head:"Head",
+
+neck:"Neck & Shoulders",
+
+chest:"Chest",
+
+abdomen:"Abdomen",
+
+back:"Back",
+
+arms:"Arms",
+
+legs:"Legs",
+
+feet:"Feet"
+
+};
+
+
+/* =========================
+   CANVAS
+========================= */
+
+function resizeCanvas(){
+
+const area=
+document.querySelector(".body-area");
+
+canvas.width=area.clientWidth;
+
+canvas.height=area.clientHeight;
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}
+
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+resizeCanvas();
+
+
+/* =========================
+   SELECT BODY PART
+========================= */
+
+function selectPart(part,button){
+
+currentPart=part;
+
+
+/* change title */
+
+document.getElementById(
+"bodyTitle"
+).textContent=partNames[part];
+
+
+/* change active button */
+
+document
+.querySelectorAll(".parts button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+
+/* hide every body image */
+
+document
+.querySelectorAll(".body-svg")
+.forEach(svg=>{
+svg.style.display="none";
+});
+
+
+/* show selected image */
+
+const selected=
+document.getElementById(
+part+"Svg"
+);
+
+if(selected){
+
+selected.style.display="block";
+
+}
+
+
+/* clear previous drawing */
+
+clearDrawing();
+
+}
+
+
+/* =========================
+   TOOLS
+========================= */
+
+function setTool(tool,button){
+
+currentTool=tool;
+
+document
+.querySelectorAll(".tools button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+}
+
+
+/* =========================
+   DRAWING
+========================= */
+
+canvas.addEventListener(
+"pointerdown",
+function(e){
+
+drawing=true;
+
+canvas.setPointerCapture(
+e.pointerId
+);
+
+const rect=
+canvas.getBoundingClientRect();
+
+lastX=
+e.clientX-rect.left;
+
+lastY=
+e.clientY-rect.top;
+
+}
+);
+
+
+canvas.addEventListener(
+"pointermove",
+function(e){
+
+if(!drawing)return;
+
+const rect=
+canvas.getBoundingClientRect();
+
+const x=
+e.clientX-rect.left;
+
+const y=
+e.clientY-rect.top;
+
+drawLine(
+lastX,
+lastY,
+x,
+y
+);
+
+lastX=x;
+lastY=y;
+
+}
+);
+
+
+canvas.addEventListener(
+"pointerup",
+function(){
+
+drawing=false;
+
+}
+);
+
+
+canvas.addEventListener(
+"pointercancel",
+function(){
+
+drawing=false;
+
+}
+);
+
+
+/* =========================
+   DRAW
+========================= */
+
+function drawLine(
+x1,
+y1,
+x2,
+y2
+){
+
+if(currentTool==="dot"){
+
+ctx.fillStyle="#ffffff";
+
+ctx.beginPath();
+
+ctx.arc(
+x2,
+y2,
+5,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+return;
+
+}
+
+
+if(currentTool==="arrow"){
+
+drawArrow(x2,y2);
+
+return;
+
+}
+
+
+ctx.lineCap="round";
+
+ctx.lineJoin="round";
+
+
+if(currentTool==="red"){
+
+ctx.strokeStyle="#ff5364";
+
+ctx.lineWidth=15;
+
+}
+
+if(currentTool==="black"){
+
+ctx.strokeStyle="#111111";
+
+ctx.lineWidth=15;
+
+}
+
+if(currentTool==="blue"){
+
+ctx.strokeStyle="#60e7ff";
+
+ctx.lineWidth=12;
+
+}
+
+if(currentTool==="purple"){
+
+ctx.strokeStyle="#bd82ff";
+
+ctx.lineWidth=12;
+
+}
+
+if(currentTool==="yellow"){
+
+ctx.strokeStyle="#ffd84d";
+
+ctx.lineWidth=12;
+
+}
+
+if(currentTool==="wave"){
+
+ctx.strokeStyle="#60e7ff";
+
+ctx.lineWidth=4;
+
+}
+
+
+ctx.beginPath();
+
+ctx.moveTo(x1,y1);
+
+ctx.lineTo(x2,y2);
+
+ctx.stroke();
+
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+function drawArrow(x,y){
+
+ctx.strokeStyle="#ffffff";
+
+ctx.lineWidth=4;
+
+ctx.beginPath();
+
+ctx.moveTo(
+x-40,
+y
+);
+
+ctx.lineTo(
+x+30,
+y
+);
+
+ctx.moveTo(
+x+30,
+y
+);
+
+ctx.lineTo(
+x+15,
+y-12
+);
+
+ctx.moveTo(
+x+30,
+y
+);
+
+ctx.lineTo(
+x+15,
+y+12
+);
+
+ctx.stroke();
+
+}
+
+
+/* =========================
+   CLEAR DRAWING
+========================= */
+
+function clearDrawing(){
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetDrawing(){
+
+clearDrawing();
+
+}
+
+
+/* =========================
+   INTENSITY
+========================= */
+
+function changeIntensity(value){
+
+intensity=
+Number(value);
+
+document.getElementById(
+"intensityValue"
+).textContent=value;
+
+}
+
+
+/* =========================
+   SAVE SYMPTOM
+========================= */
+
+function saveSymptom(){
+
+const now=
+new Date();
+
+const time=
+now.toLocaleTimeString(
+"en-US",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+
+const type=
+document.getElementById(
+"painType"
+).value;
+
+
+const comment=
+document.getElementById(
+"comment"
+).value.trim();
+
+
+const record={
+
+time:time,
+
+timestamp:Date.now(),
+
+part:currentPart,
+
+partName:partNames[currentPart],
+
+intensity:intensity,
+
+type:type,
+
+comment:comment
+
+};
+
+
+symptoms.push(record);
+
+
+updateTimeline();
+
+generateAISummary();
+
+
+document.getElementById(
+"comment"
+).value="";
+
+
+alert(
+"Symptom saved successfully."
+);
+
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+function updateTimeline(){
+
+const timeline=
+document.getElementById(
+"timeline"
+);
+
+timeline.innerHTML="";
+
+
+if(symptoms.length===0){
+
+timeline.innerHTML=`
+
+<div class="empty">
+
+No symptoms recorded yet.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+symptoms.forEach(item=>{
+
+const div=
+document.createElement(
+"div"
+);
+
+div.className=
+"timeline-item";
+
+
+div.innerHTML=`
+
+<div class="timeline-time">
+
+${item.time}
+
+</div>
+
+<strong>
+
+${item.partName}
+
+</strong>
+
+<p>
+
+Intensity:
+${item.intensity}/10
+
+</p>
+
+<p>
+
+Type:
+${item.type}
+
+</p>
+
+${
+item.comment
+?
+`<p>
+Notes:
+${escapeHTML(item.comment)}
+</p>`
+:
+""
+}
+
+`;
+
+
+timeline.appendChild(div);
+
+});
+
+}
+
+
+/* =========================
+   AI SUMMARY
+========================= */
+
+function generateAISummary(){
+
+if(symptoms.length===0){
+
+return;
+
+}
+
+
+const first=
+symptoms[0];
+
+const last=
+symptoms[symptoms.length-1];
+
+
+const maxIntensity=
+Math.max(
+...symptoms.map(
+s=>Number(s.intensity)
+)
+);
+
+
+let trend="stable";
+
+
+if(
+last.intensity >
+first.intensity
+){
+
+trend="increasing";
+
+}
+
+
+else if(
+last.intensity <
+first.intensity
+){
+
+trend="decreasing";
+
+}
+
+
+const areas=[
+...new Set(
+symptoms.map(
+s=>s.partName
+)
+)
+];
+
+
+let locationText=
+first.partName;
+
+
+if(areas.length>1){
+
+locationText=
+areas.join(", ");
+
+}
+
+
+const summary=
+document.getElementById(
+"summary"
+);
+
+
+summary.innerHTML=`
+
+<div class="stat">
+
+<span>
+Main area
+</span>
+
+<strong>
+${first.partName}
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>
+First recorded
+</span>
+
+<strong>
+${first.time}
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>
+Latest record
+</span>
+
+<strong>
+${last.time}
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>
+Maximum intensity
+</span>
+
+<strong>
+${maxIntensity}/10
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>
+Current trend
+</span>
+
+<strong>
+${trend}
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>
+Latest pain type
+</span>
+
+<strong>
+${last.type}
+</strong>
+
+</div>
+
+
+<div style="
+margin-top:14px;
+">
+
+<strong
+style="color:#6ee7ff"
+>
+
+AI-generated symptom description
+
+</strong>
+
+<br><br>
+
+The symptom was first recorded in the
+<strong>
+${first.partName}
+</strong>
+with an intensity of
+<strong>
+${first.intensity}/10
+</strong>.
+
+There are currently
+<strong>
+${symptoms.length}
+</strong>
+recorded symptom entries.
+
+The highest recorded intensity was
+<strong>
+${maxIntensity}/10
+</strong>.
+
+The current trend is
+<strong>
+${trend}
+</strong>.
+
+Recorded body areas:
+<strong>
+${locationText}
+</strong>.
+
+The latest reported sensation is
+<strong>
+${last.type.toLowerCase()}
+</strong>.
+
+${
+last.comment
+?
+`<br><br>
+Additional note:
+<strong>
+${escapeHTML(last.comment)}
+</strong>`
+:
+""
+}
+
+</div>
+
+
+<div style="
+margin-top:14px;
+font-size:11px;
+color:#66738c;
+">
+
+⚠️ This is a structured symptom summary,
+not a medical diagnosis.
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   CLEAR HISTORY
+========================= */
+
+function clearHistory(){
+
+symptoms=[];
+
+updateTimeline();
+
+document.getElementById(
+"summary"
+).innerHTML=
+
+"AI-assisted summary will appear after you save a symptom.";
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text){
+
+const div=
+document.createElement(
+"div"
+);
+
+div.textContent=text;
+
+return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>
