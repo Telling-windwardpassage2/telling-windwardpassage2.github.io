@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SymptomCanvas</title>
 
 <style>
@@ -13,63 +12,32 @@
     padding:0;
 }
 
-:root{
-    --bg:#0b1020;
-    --card:#121a2c;
-    --card2:#182239;
-    --border:#293650;
-    --text:#f4f7ff;
-    --muted:#8f9bb5;
-    --blue:#65d9ff;
-    --purple:#9b8cff;
-    --green:#64e6a5;
-    --red:#ff657d;
-    --yellow:#ffd45c;
-}
-
 body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 10% 0%,#172d50 0%,transparent 32%),
-        radial-gradient(circle at 90% 10%,#281d4c 0%,transparent 30%),
-        var(--bg);
-    color:var(--text);
-    font-family:Inter,Arial,sans-serif;
+    background:#080d18;
+    color:#f4f7ff;
+    font-family:Arial, sans-serif;
 }
-
-/* ================= HEADER ================= */
 
 header{
-    height:74px;
+    height:70px;
     padding:0 5%;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    border-bottom:1px solid #26334b;
+    background:#0c1322;
     position:sticky;
     top:0;
     z-index:100;
-    background:rgba(11,16,32,.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--border);
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:11px;
+    font-size:21px;
     font-weight:800;
-    font-size:20px;
 }
 
-.logo-icon{
-    width:38px;
-    height:38px;
-    display:grid;
-    place-items:center;
-    border-radius:12px;
-    background:linear-gradient(135deg,var(--blue),var(--purple));
-    color:#08101d;
-    font-weight:900;
+.logo span{
+    color:#65d9ff;
 }
 
 nav{
@@ -77,41 +45,24 @@ nav{
     gap:5px;
 }
 
-.nav-btn{
+nav button{
+    background:none;
     border:0;
-    background:transparent;
-    color:var(--muted);
+    color:#8794ac;
     padding:10px 14px;
-    border-radius:11px;
+    border-radius:10px;
     cursor:pointer;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
-    background:var(--card2);
+nav button.active,
+nav button:hover{
     color:white;
+    background:#18243a;
 }
-
-.status{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    color:var(--muted);
-    font-size:12px;
-}
-
-.status-dot{
-    width:8px;
-    height:8px;
-    background:var(--green);
-    border-radius:50%;
-}
-
-/* ================= GENERAL ================= */
 
 main{
-    width:min(1200px,92%);
-    margin:35px auto 80px;
+    width:min(1200px,94%);
+    margin:30px auto 70px;
 }
 
 .page{
@@ -123,40 +74,31 @@ main{
 }
 
 .card{
-    background:rgba(18,26,44,.9);
-    border:1px solid var(--border);
-    border-radius:24px;
-    padding:25px;
-    box-shadow:0 20px 55px rgba(0,0,0,.18);
+    background:#111a2b;
+    border:1px solid #26334b;
+    border-radius:20px;
+    padding:24px;
 }
 
-.card h2{
-    font-size:19px;
-    margin-bottom:7px;
+h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+h1 span{
+    color:#65d9ff;
+}
+
+h2{
+    margin-bottom:8px;
 }
 
 .subtitle{
-    color:var(--muted);
-    font-size:13px;
+    color:#8996ad;
+    font-size:14px;
     line-height:1.6;
     margin-bottom:20px;
 }
-
-.primary{
-    border:0;
-    padding:13px 19px;
-    border-radius:13px;
-    background:linear-gradient(135deg,var(--blue),var(--purple));
-    color:#07101c;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.primary:hover{
-    transform:translateY(-1px);
-}
-
-/* ================= DASHBOARD ================= */
 
 .hero{
     display:grid;
@@ -166,229 +108,165 @@ main{
 }
 
 .hero-main{
-    padding:35px;
-}
-
-.hero-main h1{
-    font-size:43px;
-    line-height:1.05;
-    margin-bottom:15px;
-}
-
-.hero-main h1 span{
-    color:var(--blue);
+    padding:38px;
 }
 
 .hero-main p{
-    max-width:650px;
-    color:var(--muted);
+    color:#9ba8bd;
     line-height:1.7;
-    margin-bottom:23px;
+    max-width:650px;
+    margin-bottom:22px;
 }
 
-.stat-card{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+.primary{
+    border:0;
+    background:linear-gradient(135deg,#65d9ff,#9b8cff);
+    color:#07101a;
+    font-weight:800;
+    padding:13px 18px;
+    border-radius:12px;
+    cursor:pointer;
 }
 
-.stat-number{
-    font-size:52px;
+.primary:hover{
+    transform:translateY(-1px);
+}
+
+.stat{
+    font-size:48px;
     font-weight:900;
+    margin:15px 0;
 }
 
-.stat-label{
-    color:var(--muted);
-}
-
-.dashboard-grid{
+.dashboard{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-/* ================= HUMAN BODY ================= */
+/* BODY */
 
-.body-container{
-    min-height:500px;
+.body-box{
+    height:500px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 }
 
-.human{
+.body{
     width:230px;
-    height:480px;
+    height:470px;
     position:relative;
 }
 
-/*
-   Human body pieces
-*/
-
-.human-part{
+.body-part{
     position:absolute;
-    background:#293754;
-    border:2px solid #435373;
-    transition:.2s;
+    background:#263650;
+    border:2px solid #405271;
     cursor:pointer;
+    transition:.2s;
 }
 
-.human-part:hover{
-    filter:brightness(1.25);
+.body-part:hover,
+.body-part.selected{
+    background:#365777;
+    border-color:#65d9ff;
+    box-shadow:0 0 20px rgba(101,217,255,.25);
 }
 
-.human-part.selected{
-    background:#385474;
-    border-color:var(--blue);
-    box-shadow:0 0 24px rgba(101,217,255,.35);
-}
-
-/* head */
-
-.human-head{
-    width:76px;
-    height:76px;
+.head{
+    width:70px;
+    height:70px;
     border-radius:50%;
-    left:77px;
     top:0;
+    left:80px;
 }
 
-/* neck */
-
-.human-neck{
-    width:34px;
-    height:35px;
-    left:98px;
-    top:67px;
+.neck{
+    width:32px;
+    height:32px;
+    top:64px;
+    left:99px;
+    border-radius:10px;
 }
 
-/* torso */
-
-.human-torso{
+.torso{
     width:120px;
-    height:158px;
+    height:165px;
+    top:88px;
     left:55px;
-    top:91px;
-    border-radius:38px 38px 28px 28px;
+    border-radius:40px 40px 27px 27px;
 }
 
-/* arms */
-
-.human-arm{
-    width:36px;
-    height:155px;
-    top:100px;
+.arm{
+    width:35px;
+    height:160px;
+    top:98px;
     border-radius:20px;
 }
 
-.human-arm.left{
+.arm.left{
     left:22px;
-    transform:rotate(8deg);
+    transform:rotate(7deg);
 }
 
-.human-arm.right{
+.arm.right{
     right:22px;
-    transform:rotate(-8deg);
+    transform:rotate(-7deg);
 }
 
-/* hands */
-
-.human-hand{
+.hand{
     width:32px;
     height:32px;
     border-radius:50%;
-    top:246px;
+    top:250px;
 }
 
-.human-hand.left{
-    left:16px;
+.hand.left{
+    left:15px;
 }
 
-.human-hand.right{
-    right:16px;
+.hand.right{
+    right:15px;
 }
 
-/* legs */
-
-.human-leg{
-    width:46px;
-    height:180px;
-    top:237px;
-    border-radius:22px 22px 18px 18px;
+.leg{
+    width:47px;
+    height:190px;
+    top:240px;
+    border-radius:23px;
 }
 
-.human-leg.left{
+.leg.left{
     left:67px;
 }
 
-.human-leg.right{
+.leg.right{
     right:67px;
 }
 
-/* feet */
-
-.human-foot{
-    width:57px;
-    height:29px;
-    top:407px;
-    border-radius:18px;
+.foot{
+    width:58px;
+    height:30px;
+    top:420px;
+    border-radius:20px;
 }
 
-.human-foot.left{
-    left:51px;
+.foot.left{
+    left:50px;
     transform:rotate(-5deg);
 }
 
-.human-foot.right{
-    right:51px;
+.foot.right{
+    right:50px;
     transform:rotate(5deg);
 }
 
-/* ================= RECENT ================= */
+/* TRACK */
 
-.recent-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.entry{
-    background:#0e172a;
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.entry-title{
-    font-weight:750;
-    margin-bottom:5px;
-}
-
-.entry-meta{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.5;
-}
-
-.intensity{
-    min-width:48px;
-    height:34px;
-    padding:8px;
-    border-radius:10px;
-    background:#24334e;
-    text-align:center;
-    font-weight:800;
-}
-
-/* ================= TRACK ================= */
-
-.track-grid{
+.track{
     display:grid;
-    grid-template-columns:1.35fr .75fr;
+    grid-template-columns:1.3fr .7fr;
     gap:20px;
 }
 
@@ -396,109 +274,108 @@ main{
     display:flex;
     flex-wrap:wrap;
     gap:7px;
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
-.part-btn{
-    border:1px solid var(--border);
-    background:#10192c;
-    color:#aeb8cb;
+.part{
     padding:9px 12px;
+    background:#0c1525;
+    color:#9aa7bc;
+    border:1px solid #293650;
     border-radius:10px;
     cursor:pointer;
 }
 
-.part-btn:hover,
-.part-btn.active{
+.part.active{
     color:white;
-    border-color:var(--blue);
-    background:#172c45;
+    border-color:#65d9ff;
+    background:#172d46;
 }
 
-/* drawing area */
+/* MANNEQUIN */
 
-.canvas-wrapper{
+.drawing-area{
     height:550px;
-    background:#090f1e;
-    border:1px solid var(--border);
-    border-radius:20px;
+    background:#080e1a;
+    border:1px solid #283650;
+    border-radius:18px;
     position:relative;
     overflow:hidden;
 }
 
-#drawingCanvas{
-    width:100%;
-    height:100%;
-    display:block;
+/* SVG is the actual drawing mannequin */
+
+#mannequin{
     position:absolute;
-    inset:0;
+    width:270px;
+    height:520px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+#mannequin .shape{
+    fill:#263650;
+    stroke:#50627f;
+    stroke-width:2;
+}
+
+#mannequin .shape.active{
+    fill:#365777;
+    stroke:#65d9ff;
+}
+
+/* drawing SVG */
+
+#drawSvg{
+    position:absolute;
+    width:270px;
+    height:520px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
     z-index:5;
     touch-action:none;
 }
 
-.body-svg{
-    position:absolute;
-    width:250px;
-    height:510px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    z-index:2;
-    pointer-events:none;
+#drawSvg path{
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
-
-.body-svg path,
-.body-svg circle,
-.body-svg rect{
-    fill:#263550;
-    stroke:#435373;
-    stroke-width:2;
-}
-
-.selected-svg{
-    fill:#365270 !important;
-    stroke:var(--blue) !important;
-}
-
-/* drawing toolbar */
 
 .toolbar{
     display:flex;
-    flex-wrap:wrap;
     gap:8px;
-    margin-top:13px;
+    flex-wrap:wrap;
+    margin-top:12px;
 }
 
 .tool{
-    border:1px solid var(--border);
-    background:#151f34;
-    color:#d9dfeb;
+    background:#172238;
+    color:#dce3ee;
+    border:1px solid #2a3954;
     padding:10px 13px;
     border-radius:10px;
     cursor:pointer;
 }
 
 .tool.active{
-    border-color:var(--blue);
-    background:#172e48;
+    border-color:#65d9ff;
 }
 
-.tool.clear{
-    color:#ff7c91;
-}
-
-/* ================= FORM ================= */
+/* FORM */
 
 .form{
     display:flex;
     flex-direction:column;
-    gap:17px;
+    gap:16px;
 }
 
 label{
     display:block;
-    color:#aeb8ca;
     font-size:13px;
+    color:#9ba8bc;
     margin-bottom:7px;
 }
 
@@ -506,36 +383,34 @@ input,
 select,
 textarea{
     width:100%;
-    background:#0b1426;
-    border:1px solid var(--border);
+    background:#0b1424;
+    border:1px solid #293750;
     color:white;
-    padding:13px;
-    border-radius:12px;
+    border-radius:11px;
+    padding:12px;
     outline:none;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
-    border-color:var(--blue);
+    border-color:#65d9ff;
 }
 
-textarea{
-    min-height:115px;
-    resize:vertical;
-}
-
-.range-value{
+.range-number{
     font-size:28px;
-    font-weight:850;
-    margin-bottom:9px;
+    font-weight:800;
+    margin-bottom:7px;
 }
 
-input[type="range"]{
-    accent-color:var(--blue);
+input[type=range]{
+    accent-color:#65d9ff;
 }
-
-/* pain types */
 
 .pain-grid{
     display:grid;
@@ -544,11 +419,11 @@ input[type="range"]{
 }
 
 .pain{
-    border:1px solid var(--border);
-    background:#10192b;
-    color:#aeb8cc;
     padding:11px;
-    border-radius:11px;
+    border-radius:10px;
+    background:#101a2c;
+    border:1px solid #293750;
+    color:#aab5c8;
     cursor:pointer;
 }
 
@@ -557,61 +432,90 @@ input[type="range"]{
     border-color:white;
 }
 
-.pain.red.active{background:#572633;}
-.pain.dark.active{background:#252a34;}
-.pain.cyan.active{background:#164b5d;}
-.pain.purple.active{background:#423168;}
-.pain.yellow.active{background:#5a4d1e;}
-.pain.green.active{background:#224c3a;}
-.pain.pink.active{background:#542b3c;}
-
-/* legend */
-
-.legend{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-}
-
-.legend-item{
-    color:#a8b3c8;
-    font-size:12px;
-}
-
-.legend-dot{
-    display:inline-block;
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    margin-right:6px;
-}
-
-/* ================= HISTORY ================= */
-
-.history-list{
+.history{
     display:flex;
     flex-direction:column;
-    gap:11px;
+    gap:10px;
 }
 
-/* ================= INSIGHTS ================= */
+.entry{
+    background:#0c1525;
+    border:1px solid #293750;
+    border-radius:13px;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
 
-.insight-grid{
+.entry-title{
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.meta{
+    color:#8795ad;
+    font-size:12px;
+    line-height:1.6;
+}
+
+.score{
+    font-weight:800;
+    background:#1d2d47;
+    border-radius:9px;
+    padding:8px 10px;
+    height:max-content;
+}
+
+.empty{
+    text-align:center;
+    color:#77859d;
+    padding:45px;
+}
+
+/* REPORT */
+
+.report{
+    background:#0b1424;
+    border:1px solid #293750;
+    border-radius:15px;
+    padding:20px;
+    line-height:1.8;
+    color:#dce3ef;
+}
+
+.report h3{
+    color:#65d9ff;
+    margin-bottom:12px;
+}
+
+.report-section{
+    margin-bottom:14px;
+}
+
+.report-note{
+    color:#77859d;
+    font-size:12px;
+    margin-top:15px;
+}
+
+/* INSIGHTS */
+
+.insights{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-.chart{
+.bars{
     height:300px;
     display:flex;
     align-items:flex-end;
-    gap:10px;
-    padding:25px 10px;
-    border-bottom:1px solid var(--border);
+    gap:8px;
+    padding:20px 5px;
 }
 
-.bar-column{
+.barbox{
     flex:1;
     height:100%;
     display:flex;
@@ -620,213 +524,90 @@ input[type="range"]{
 }
 
 .bar{
-    width:min(45px,80%);
-    min-height:4px;
-    background:linear-gradient(to top,var(--blue),var(--purple));
-    border-radius:9px 9px 3px 3px;
+    width:80%;
+    max-width:40px;
+    background:linear-gradient(to top,#65d9ff,#9b8cff);
+    border-radius:8px 8px 2px 2px;
     position:relative;
 }
 
-.bar-value{
+.bar span{
     position:absolute;
-    top:-22px;
+    top:-20px;
     left:50%;
     transform:translateX(-50%);
     font-size:11px;
 }
 
-.bar-label{
-    color:var(--muted);
-    font-size:10px;
-    text-align:center;
-    margin-top:7px;
-}
+/* MOBILE */
 
-.overview{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
+@media(max-width:850px){
 
-/* ================= REPORT ================= */
-
-.report{
-    background:#0b1425;
-    border:1px solid var(--border);
-    border-radius:17px;
-    padding:22px;
-    line-height:1.8;
-    color:#dce3f0;
-}
-
-.report-title{
-    font-size:20px;
-    font-weight:850;
-    margin-bottom:13px;
-}
-
-.report p{
-    margin-bottom:8px;
-}
-
-.report strong{
-    color:white;
-}
-
-.report-note{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:15px;
-}
-
-/* ================= EMPTY ================= */
-
-.empty{
-    text-align:center;
-    color:var(--muted);
-    padding:45px 15px;
-}
-
-.empty-icon{
-    font-size:38px;
-    margin-bottom:9px;
-}
-
-/* ================= TOAST ================= */
-
-.toast{
-    position:fixed;
-    right:24px;
-    bottom:24px;
-    background:#1c2b46;
-    border:1px solid var(--border);
-    border-radius:13px;
-    padding:13px 18px;
-    opacity:0;
-    transform:translateY(15px);
-    transition:.25s;
-    z-index:500;
-}
-
-.toast.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
+    .hero,
+    .dashboard,
+    .track,
+    .insights{
+        grid-template-columns:1fr;
+    }
 
     nav{
         display:none;
     }
 
-    .hero,
-    .dashboard-grid,
-    .track-grid,
-    .insight-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-main h1{
+    h1{
         font-size:34px;
-    }
-
-    .canvas-wrapper{
-        height:470px;
     }
 }
 
-@media(max-width:550px){
+@media(max-width:500px){
 
-    header{
-        padding:0 4%;
-    }
-
-    .status{
-        display:none;
-    }
-
-    main{
-        width:94%;
-        margin-top:20px;
+    .drawing-area{
+        height:470px;
     }
 
     .card{
-        padding:19px;
-        border-radius:19px;
-    }
-
-    .hero-main{
-        padding:25px;
-    }
-
-    .canvas-wrapper{
-        height:420px;
-    }
-
-    .pain-grid{
-        grid-template-columns:1fr;
+        padding:18px;
     }
 }
 </style>
 </head>
 
-
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-        <div class="logo-icon">S</div>
-        SymptomCanvas
+        <span>✦</span> SymptomCanvas
     </div>
 
     <nav>
-
-        <button class="nav-btn active"
-                onclick="showPage('dashboard',this)">
+        <button class="active" onclick="openPage('dashboard',this)">
             Dashboard
         </button>
 
-        <button class="nav-btn"
-                onclick="showPage('track',this)">
+        <button onclick="openPage('track',this)">
             Track
         </button>
 
-        <button class="nav-btn"
-                onclick="showPage('history',this)">
+        <button onclick="openPage('history',this)">
             History
         </button>
 
-        <button class="nav-btn"
-                onclick="showPage('insights',this)">
+        <button onclick="openPage('insights',this)">
             Insights
         </button>
 
-        <button class="nav-btn"
-                onclick="showPage('report',this)">
+        <button onclick="openPage('report',this)">
             AI Report
         </button>
-
     </nav>
-
-    <div class="status">
-        <span class="status-dot"></span>
-        Stored locally
-    </div>
 
 </header>
 
 
 <main>
 
-
-<!-- =========================================================
-     DASHBOARD
-========================================================= -->
+<!-- DASHBOARD -->
 
 <section id="dashboard" class="page active">
 
@@ -840,36 +621,31 @@ input[type="range"]{
             </h1>
 
             <p>
-                Visualize where you feel a symptom,
-                describe how it feels, track changes over time,
-                and create a structured summary for a healthcare professional.
+                Mark exactly where you feel a symptom,
+                describe how it feels and keep a visual timeline
+                that can help you communicate with a healthcare professional.
             </p>
 
             <button class="primary"
-                    onclick="showPage('track')">
-                + Track a symptom
+                    onclick="openPage('track')">
+                + Track symptom
             </button>
 
         </div>
 
+        <div class="card">
 
-        <div class="card stat-card">
+            <div class="subtitle">
+                Recorded symptoms
+            </div>
 
-            <div>
-
-                <div class="stat-number"
-                     id="entryCount">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Recorded symptoms
-                </div>
-
+            <div class="stat"
+                 id="count">
+                0
             </div>
 
             <button class="primary"
-                    onclick="showPage('history')">
+                    onclick="openPage('history')">
                 View history
             </button>
 
@@ -878,78 +654,52 @@ input[type="range"]{
     </div>
 
 
-    <div class="dashboard-grid">
-
-
-        <!-- BODY -->
+    <div class="dashboard">
 
         <div class="card">
 
-            <h2>Symptom Map</h2>
+            <h2>Body Map</h2>
 
             <div class="subtitle">
-                Click an area of the body to track a symptom.
+                Select a body area.
             </div>
 
+            <div class="body-box">
 
-            <div class="body-container">
+                <div class="body">
 
-                <div class="human">
+                    <div class="body-part head"
+                         onclick="dashboardSelect('Head')"></div>
 
-                    <div class="human-part human-head"
-                         id="dashHead"
-                         onclick="chooseFromDashboard('Head')">
-                    </div>
+                    <div class="body-part neck"
+                         onclick="dashboardSelect('Neck & Shoulders')"></div>
 
-                    <div class="human-part human-neck"
-                         id="dashNeck"
-                         onclick="chooseFromDashboard('Neck & Shoulders')">
-                    </div>
+                    <div class="body-part torso"
+                         onclick="dashboardSelect('Chest')"></div>
 
-                    <div class="human-part human-torso"
-                         id="dashChest"
-                         onclick="chooseFromDashboard('Chest')">
-                    </div>
+                    <div class="body-part arm left"
+                         onclick="dashboardSelect('Arms')"></div>
 
-                    <div class="human-part human-arm left"
-                         id="dashLeftArm"
-                         onclick="chooseFromDashboard('Arms')">
-                    </div>
+                    <div class="body-part arm right"
+                         onclick="dashboardSelect('Arms')"></div>
 
-                    <div class="human-part human-arm right"
-                         id="dashRightArm"
-                         onclick="chooseFromDashboard('Arms')">
-                    </div>
+                    <div class="body-part hand left"
+                         onclick="dashboardSelect('Arms')"></div>
 
-                    <div class="human-part human-hand left"
-                         id="dashLeftHand"
-                         onclick="chooseFromDashboard('Arms')">
-                    </div>
+                    <div class="body-part hand right"
+                         onclick="dashboardSelect('Arms')"></div>
 
-                    <div class="human-part human-hand right"
-                         id="dashRightHand"
-                         onclick="chooseFromDashboard('Arms')">
-                    </div>
+                    <div class="body-part leg left"
+                         onclick="dashboardSelect('Legs')"></div>
 
-                    <div class="human-part human-leg left"
-                         id="dashLeftLeg"
-                         onclick="chooseFromDashboard('Legs')">
-                    </div>
+                    <div class="body-part leg right"
+                         onclick="dashboardSelect('Legs')"></div>
 
-                    <div class="human-part human-leg right"
-                         id="dashRightLeg"
-                         onclick="chooseFromDashboard('Legs')">
-                    </div>
+                    <div class="body-part foot left"
+                         onclick="dashboardSelect('Feet')"></div>
 
-                    <div class="human-part human-foot left"
-                         id="dashLeftFoot"
-                         onclick="chooseFromDashboard('Feet')">
-                    </div>
-
-                    <div class="human-part human-foot right"
-                         id="dashRightFoot"
-                         onclick="chooseFromDashboard('Feet')">
-                    </div>
+                    <div class="body-part foot right"
+                         onclick="dashboardSelect('Feet')"></div>
 
                 </div>
 
@@ -958,18 +708,16 @@ input[type="range"]{
         </div>
 
 
-        <!-- RECENT -->
-
         <div class="card">
 
             <h2>Recent symptoms</h2>
 
             <div class="subtitle">
-                Your latest recorded entries.
+                Your latest entries.
             </div>
 
-            <div class="recent-list"
-                 id="recentList">
+            <div id="recent"
+                 class="history">
             </div>
 
         </div>
@@ -979,66 +727,59 @@ input[type="range"]{
 </section>
 
 
-
-<!-- =========================================================
-     TRACK
-========================================================= -->
+<!-- TRACK -->
 
 <section id="track" class="page">
 
-    <div class="track-grid">
-
-
-        <!-- DRAWING -->
+    <div class="track">
 
         <div class="card">
 
-            <h2>Visual Symptom Map</h2>
+            <h2>Draw your symptom</h2>
 
             <div class="subtitle">
-                Choose a body area and draw exactly where you feel the symptom.
-                Drawing is automatically restricted to the selected area.
+                Select one body area. You can draw only inside the selected area.
             </div>
 
 
             <div class="parts">
 
-                <button class="part-btn active"
+                <button class="part active"
                         onclick="selectArea('Head',this)">
                     Head
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Neck & Shoulders',this)">
                     Neck & Shoulders
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Chest',this)">
                     Chest
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Abdomen',this)">
                     Abdomen
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Back',this)">
                     Back
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Arms',this)">
                     Arms
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Legs',this)">
                     Legs
                 </button>
 
-                <button class="part-btn"
+                <button class="part"
                         onclick="selectArea('Feet',this)">
                     Feet
                 </button>
@@ -1046,133 +787,241 @@ input[type="range"]{
             </div>
 
 
-            <div class="canvas-wrapper">
+            <div class="drawing-area">
 
-                <!-- HUMAN SVG -->
+                <!-- MANNEQUIN -->
 
-                <svg class="body-svg"
-                     id="humanSvg"
-                     viewBox="0 0 250 510"
-                     xmlns="http://www.w3.org/2000/svg">
+                <svg id="mannequin"
+                     viewBox="0 0 270 520">
 
-                    <!-- head -->
-                    <circle id="svgHead"
-                            cx="125"
+                    <!-- HEAD -->
+                    <circle id="mHead"
+                            class="shape active"
+                            cx="135"
                             cy="45"
-                            r="38"/>
+                            r="37"/>
 
-                    <!-- neck -->
-                    <rect id="svgNeck"
-                          x="108"
-                          y="79"
+                    <!-- NECK -->
+                    <rect id="mNeck"
+                          class="shape"
+                          x="118"
+                          y="78"
                           width="34"
                           height="40"
-                          rx="14"/>
+                          rx="12"/>
 
-                    <!-- torso -->
-                    <path id="svgChest"
+                    <!-- CHEST -->
+                    <path id="mChest"
+                          class="shape"
                           d="
                           M108 108
-                          C78 112 63 130 58 158
-                          L66 238
-                          C68 254 86 265 125 265
-                          C164 265 182 254 184 238
-                          L192 158
-                          C187 130 172 112 142 108
+                          C75 112 62 135 61 160
+                          L67 250
+                          C70 268 93 276 135 276
+                          C177 276 200 268 203 250
+                          L209 160
+                          C208 135 195 112 162 108
                           Z"/>
 
-                    <!-- left arm -->
-                    <path id="svgLeftArm"
+                    <!-- LEFT ARM -->
+                    <path id="mArmL"
+                          class="shape"
                           d="
-                          M67 123
-                          C53 128 47 141 44 158
-                          L29 245
-                          C27 258 34 266 44 266
-                          C54 266 60 258 62 247
-                          L79 170
-                          L79 137
+                          M70 123
+                          C55 128 49 143 47 160
+                          L32 250
+                          C30 263 37 271 47 271
+                          C57 271 63 263 65 251
+                          L82 170
+                          L82 135
                           Z"/>
 
-                    <!-- right arm -->
-                    <path id="svgRightArm"
+                    <!-- RIGHT ARM -->
+                    <path id="mArmR"
+                          class="shape"
                           d="
-                          M183 123
-                          C197 128 203 141 206 158
-                          L221 245
-                          C223 258 216 266 206 266
-                          C196 266 190 258 188 247
-                          L171 170
-                          L171 137
+                          M200 123
+                          C215 128 221 143 223 160
+                          L238 250
+                          C240 263 233 271 223 271
+                          C213 271 207 263 205 251
+                          L188 170
+                          L188 135
                           Z"/>
 
-                    <!-- left hand -->
-                    <circle id="svgLeftHand"
-                            cx="42"
-                            cy="282"
+                    <!-- HANDS -->
+                    <circle id="mHandL"
+                            class="shape"
+                            cx="45"
+                            cy="288"
                             r="18"/>
 
-                    <!-- right hand -->
-                    <circle id="svgRightHand"
-                            cx="208"
-                            cy="282"
+                    <circle id="mHandR"
+                            class="shape"
+                            cx="225"
+                            cy="288"
                             r="18"/>
 
-                    <!-- left leg -->
-                    <path id="svgLeftLeg"
+                    <!-- LEFT LEG -->
+                    <path id="mLegL"
+                          class="shape"
                           d="
-                          M79 252
-                          C82 278 84 307 80 333
-                          L72 435
-                          C71 453 78 466 91 466
-                          C104 466 109 453 110 437
-                          L120 334
-                          L125 270
+                          M82 252
                           L125 252
+                          L127 340
+                          L113 445
+                          C111 461 103 472 91 472
+                          C77 472 70 460 72 444
+                          L80 337
                           Z"/>
 
-                    <!-- right leg -->
-                    <path id="svgRightLeg"
+                    <!-- RIGHT LEG -->
+                    <path id="mLegR"
+                          class="shape"
                           d="
-                          M125 252
-                          L125 270
-                          L130 334
-                          L140 437
-                          C141 453 146 466 159 466
-                          C172 466 179 453 178 435
-                          L170 333
-                          C166 307 168 278 171 252
+                          M145 252
+                          L188 252
+                          L190 337
+                          L198 444
+                          C200 460 193 472 179 472
+                          C167 472 159 461 157 445
+                          L143 340
                           Z"/>
 
-                    <!-- left foot -->
-                    <path id="svgLeftFoot"
+                    <!-- FEET -->
+                    <path id="mFootL"
+                          class="shape"
                           d="
-                          M72 430
-                          C61 438 51 451 48 464
-                          C46 472 52 478 62 478
-                          L94 478
-                          C104 478 109 471 110 461
-                          L110 443
-                          C98 449 83 444 72 430
+                          M72 438
+                          C59 444 48 456 45 468
+                          C43 477 50 483 61 483
+                          L96 483
+                          C106 483 112 475 112 464
+                          L112 448
+                          C97 454 83 451 72 438
                           Z"/>
 
-                    <!-- right foot -->
-                    <path id="svgRightFoot"
+                    <path id="mFootR"
+                          class="shape"
                           d="
-                          M178 430
-                          C189 438 199 451 202 464
-                          C204 472 198 478 188 478
-                          L156 478
-                          C146 478 141 471 140 461
-                          L140 443
-                          C152 449 167 444 178 430
+                          M198 438
+                          C211 444 222 456 225 468
+                          C227 477 220 483 209 483
+                          L174 483
+                          C164 483 158 475 158 464
+                          L158 448
+                          C173 454 187 451 198 438
                           Z"/>
 
                 </svg>
 
 
-                <!-- DRAWING CANVAS -->
+                <!-- DRAWING LAYER -->
 
-                <canvas id="drawingCanvas"></canvas>
+                <svg id="drawSvg"
+                     viewBox="0 0 270 520"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <defs>
+
+                        <clipPath id="clipHead">
+                            <circle cx="135" cy="45" r="37"/>
+                        </clipPath>
+
+                        <clipPath id="clipNeck">
+                            <rect x="105"
+                                  y="75"
+                                  width="60"
+                                  height="55"
+                                  rx="20"/>
+                        </clipPath>
+
+                        <clipPath id="clipChest">
+                            <path d="
+                            M108 108
+                            C75 112 62 135 61 160
+                            L67 250
+                            C70 268 93 276 135 276
+                            C177 276 200 268 203 250
+                            L209 160
+                            C208 135 195 112 162 108
+                            Z"/>
+                        </clipPath>
+
+                        <clipPath id="clipArms">
+                            <path d="
+                            M70 123
+                            C55 128 49 143 47 160
+                            L32 250
+                            C30 263 37 271 47 271
+                            C57 271 63 263 65 251
+                            L82 170
+                            L82 135
+                            Z"/>
+
+                            <path d="
+                            M200 123
+                            C215 128 221 143 223 160
+                            L238 250
+                            C240 263 233 271 223 271
+                            C213 271 207 263 205 251
+                            L188 170
+                            L188 135
+                            Z"/>
+
+                            <circle cx="45" cy="288" r="18"/>
+                            <circle cx="225" cy="288" r="18"/>
+                        </clipPath>
+
+                        <clipPath id="clipLegs">
+                            <path d="
+                            M82 252
+                            L125 252
+                            L127 340
+                            L113 445
+                            C111 461 103 472 91 472
+                            C77 472 70 460 72 444
+                            L80 337
+                            Z"/>
+
+                            <path d="
+                            M145 252
+                            L188 252
+                            L190 337
+                            L198 444
+                            C200 460 193 472 179 472
+                            C167 472 159 461 157 445
+                            L143 340
+                            Z"/>
+                        </clipPath>
+
+                        <clipPath id="clipFeet">
+                            <path d="
+                            M72 438
+                            C59 444 48 456 45 468
+                            C43 477 50 483 61 483
+                            L96 483
+                            C106 483 112 475 112 464
+                            L112 448
+                            C97 454 83 451 72 438
+                            Z"/>
+
+                            <path d="
+                            M198 438
+                            C211 444 222 456 225 468
+                            C227 477 220 483 209 483
+                            L174 483
+                            C164 483 158 475 158 464
+                            L158 448
+                            C173 454 187 451 198 438
+                            Z"/>
+                        </clipPath>
+
+                    </defs>
+
+                    <g id="drawingGroup"></g>
+
+                </svg>
 
             </div>
 
@@ -1180,30 +1029,28 @@ input[type="range"]{
             <div class="toolbar">
 
                 <button class="tool active"
-                        id="drawTool"
-                        onclick="setTool('draw',this)">
+                        onclick="changeTool('draw',this)">
                     ✏ Draw
                 </button>
 
                 <button class="tool"
-                        onclick="setTool('erase',this)">
-                    ⌫ Eraser
+                        onclick="changeTool('erase',this)">
+                    Eraser
                 </button>
 
                 <button class="tool"
-                        onclick="undo()">
+                        onclick="undoDrawing()">
                     ↶ Undo
                 </button>
 
-                <button class="tool clear"
-                        onclick="clearCanvas()">
+                <button class="tool"
+                        onclick="clearDrawing()">
                     Clear
                 </button>
 
             </div>
 
         </div>
-
 
 
         <!-- FORM -->
@@ -1213,21 +1060,16 @@ input[type="range"]{
             <h2>Symptom details</h2>
 
             <div class="subtitle">
-                Add information about what you are experiencing.
+                Add information about the symptom.
             </div>
-
 
             <div class="form">
 
-
                 <div>
-
                     <label>Selected area</label>
-
-                    <input id="selectedArea"
+                    <input id="areaInput"
                            value="Head"
                            readonly>
-
                 </div>
 
 
@@ -1235,17 +1077,17 @@ input[type="range"]{
 
                     <label>Intensity</label>
 
-                    <div class="range-value">
+                    <div class="range-number">
                         <span id="intensityValue">5</span>/10
                     </div>
 
-                    <input
-                        type="range"
-                        id="intensity"
-                        min="1"
-                        max="10"
-                        value="5"
-                        oninput="updateIntensity()">
+                    <input type="range"
+                           id="intensity"
+                           min="1"
+                           max="10"
+                           value="5"
+                           oninput="
+                           intensityValue.textContent=this.value">
 
                 </div>
 
@@ -1256,43 +1098,43 @@ input[type="range"]{
 
                     <div class="pain-grid">
 
-                        <button class="pain red"
-                                onclick="selectPain('Severe',this)">
-                            🔴 Severe
-                        </button>
-
-                        <button class="pain dark"
-                                onclick="selectPain('Deep',this)">
-                            ⚫ Deep
-                        </button>
-
-                        <button class="pain cyan"
-                                onclick="selectPain('Wave-like',this)">
-                            🔵 Wave-like
-                        </button>
-
-                        <button class="pain purple active"
-                                onclick="selectPain('Pulsating',this)">
+                        <button class="pain active"
+                                onclick="choosePain('Pulsating',this)">
                             🟣 Pulsating
                         </button>
 
-                        <button class="pain yellow"
-                                onclick="selectPain('Burning',this)">
-                            🟡 Burning
-                        </button>
-
-                        <button class="pain green"
-                                onclick="selectPain('Tingling',this)">
-                            ••• Tingling
-                        </button>
-
-                        <button class="pain pink"
-                                onclick="selectPain('Radiating',this)">
-                            → Radiating
+                        <button class="pain"
+                                onclick="choosePain('Severe',this)">
+                            🔴 Severe
                         </button>
 
                         <button class="pain"
-                                onclick="selectPain('Other',this)">
+                                onclick="choosePain('Deep',this)">
+                            ⚫ Deep
+                        </button>
+
+                        <button class="pain"
+                                onclick="choosePain('Wave-like',this)">
+                            🔵 Wave-like
+                        </button>
+
+                        <button class="pain"
+                                onclick="choosePain('Burning',this)">
+                            🟡 Burning
+                        </button>
+
+                        <button class="pain"
+                                onclick="choosePain('Tingling',this)">
+                            🟢 Tingling
+                        </button>
+
+                        <button class="pain"
+                                onclick="choosePain('Radiating',this)">
+                            🩷 Radiating
+                        </button>
+
+                        <button class="pain"
+                                onclick="choosePain('Other',this)">
                             Other
                         </button>
 
@@ -1302,7 +1144,6 @@ input[type="range"]{
 
 
                 <div>
-
                     <label>Duration</label>
 
                     <select id="duration">
@@ -1315,12 +1156,10 @@ input[type="range"]{
                         <option>Constant</option>
 
                     </select>
-
                 </div>
 
 
                 <div>
-
                     <label>Frequency</label>
 
                     <select id="frequency">
@@ -1332,12 +1171,10 @@ input[type="range"]{
                         <option>Occasionally</option>
 
                     </select>
-
                 </div>
 
 
                 <div>
-
                     <label>Possible trigger</label>
 
                     <select id="trigger">
@@ -1347,28 +1184,25 @@ input[type="range"]{
                         <option>Stress</option>
                         <option>Sleep / lack of sleep</option>
                         <option>Food</option>
-                        <option>Position / movement</option>
+                        <option>Movement / position</option>
                         <option>Other</option>
 
                     </select>
-
                 </div>
 
 
                 <div>
 
-                    <label>Additional notes</label>
+                    <label>Notes</label>
 
-                    <textarea
-                        id="notes"
-                        placeholder="Describe what you feel, when it started, or anything else you noticed..."
-                    ></textarea>
+                    <textarea id="notes"
+                              placeholder="Describe what you feel..."></textarea>
 
                 </div>
 
 
                 <button class="primary"
-                        onclick="saveEntry()">
+                        onclick="saveSymptom()">
                     Save symptom
                 </button>
 
@@ -1378,75 +1212,10 @@ input[type="range"]{
 
     </div>
 
-
-    <br>
-
-
-    <!-- LEGEND -->
-
-    <div class="card">
-
-        <h2>Symptom legend</h2>
-
-        <div class="subtitle">
-            Use the colors to represent different sensations.
-        </div>
-
-        <div class="legend">
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#ff657d"></span>
-                Severe
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#111827"></span>
-                Deep
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#65d9ff"></span>
-                Wave-like
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#9b8cff"></span>
-                Pulsating
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#ffd45c"></span>
-                Burning
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#64e6a5"></span>
-                Tingling
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot"
-                      style="background:#ff8ca1"></span>
-                Radiating
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
 
 
-
-<!-- =========================================================
-     HISTORY
-========================================================= -->
+<!-- HISTORY -->
 
 <section id="history" class="page">
 
@@ -1455,11 +1224,11 @@ input[type="range"]{
         <h2>Symptom Timeline</h2>
 
         <div class="subtitle">
-            All recorded symptoms are stored locally on this device.
+            Your complete symptom history.
         </div>
 
-        <div class="history-list"
-             id="historyList">
+        <div id="historyList"
+             class="history">
         </div>
 
     </div>
@@ -1467,26 +1236,22 @@ input[type="range"]{
 </section>
 
 
-
-<!-- =========================================================
-     INSIGHTS
-========================================================= -->
+<!-- INSIGHTS -->
 
 <section id="insights" class="page">
 
-    <div class="insight-grid">
-
+    <div class="insights">
 
         <div class="card">
 
-            <h2>Intensity over time</h2>
+            <h2>Intensity history</h2>
 
             <div class="subtitle">
-                Your recorded symptom intensity.
+                Your recorded intensity over time.
             </div>
 
-            <div class="chart"
-                 id="chart">
+            <div id="bars"
+                 class="bars">
             </div>
 
         </div>
@@ -1494,14 +1259,10 @@ input[type="range"]{
 
         <div class="card">
 
-            <h2>Tracking overview</h2>
+            <h2>Overview</h2>
 
-            <div class="subtitle">
-                Simple statistics from your entries.
-            </div>
-
-            <div class="overview"
-                 id="overview">
+            <div id="overview"
+                 class="history">
             </div>
 
         </div>
@@ -1511,48 +1272,20 @@ input[type="range"]{
 </section>
 
 
-
-<!-- =========================================================
-     AI REPORT
-========================================================= -->
+<!-- REPORT -->
 
 <section id="report" class="page">
 
     <div class="card">
 
-        <h2>AI Symptom Summary</h2>
+        <h2>AI Symptom Report</h2>
 
         <div class="subtitle">
-            A structured summary based on the information you entered.
+            A structured summary generated from your recorded symptoms.
         </div>
 
-        <div class="report"
-             id="aiReport">
-        </div>
-
-        <br>
-
-        <button class="primary"
-                onclick="generateReport()">
-            Generate summary
-        </button>
-
-    </div>
-
-
-    <br>
-
-
-    <div class="card">
-
-        <h2>Doctor Report</h2>
-
-        <div class="subtitle">
-            A compact version that can make symptom information easier to communicate.
-        </div>
-
-        <div class="report"
-             id="doctorReport">
+        <div id="reportBox"
+             class="report">
         </div>
 
     </div>
@@ -1562,14 +1295,6 @@ input[type="range"]{
 </main>
 
 
-
-<div class="toast"
-     id="toast">
-    Saved
-</div>
-
-
-
 <script>
 
 /* =========================================================
@@ -1577,80 +1302,68 @@ input[type="range"]{
 ========================================================= */
 
 let entries =
-    JSON.parse(localStorage.getItem("symptomCanvasEntries")) || [];
+JSON.parse(localStorage.getItem("symptomCanvasData") || "[]");
 
-let selectedArea = "Head";
+let currentArea = "Head";
 
-let selectedPain = "Pulsating";
+let currentPain = "Pulsating";
 
 let currentTool = "draw";
 
-let drawing = false;
-
-let undoHistory = [];
+let historyPaths = [];
 
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
-function showPage(page,button){
+function openPage(id,button){
 
     document.querySelectorAll(".page")
         .forEach(p => p.classList.remove("active"));
 
-    const target =
-        document.getElementById(page);
+    document.getElementById(id)
+        .classList.add("active");
 
-    if(target){
-        target.classList.add("active");
-    }
-
-    document.querySelectorAll(".nav-btn")
+    document.querySelectorAll("nav button")
         .forEach(b => b.classList.remove("active"));
 
     if(button){
         button.classList.add("active");
     }
 
-    updateEverything();
+    refresh();
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    window.scrollTo(0,0);
 }
 
 
 /* =========================================================
-   DASHBOARD BODY
+   DASHBOARD
 ========================================================= */
 
-function chooseFromDashboard(area){
+function dashboardSelect(area){
 
-    selectedArea = area;
+    currentArea = area;
 
-    showPage("track");
+    openPage("track");
 
-    const buttons =
-        document.querySelectorAll(".part-btn");
+    document.getElementById("areaInput")
+        .value = area;
 
-    buttons.forEach(button => {
+    document.querySelectorAll(".part")
+        .forEach(button => {
 
-        button.classList.remove("active");
+            button.classList.toggle(
+                "active",
+                button.textContent.trim() === area
+            );
 
-        if(button.textContent.trim() === area){
-            button.classList.add("active");
-        }
+        });
 
-    });
+    updateMannequin();
 
-    document.getElementById("selectedArea").value =
-        area;
-
-    updateSvgSelection();
-
-    clearCanvas();
+    clearDrawing();
 }
 
 
@@ -1660,785 +1373,302 @@ function chooseFromDashboard(area){
 
 function selectArea(area,button){
 
-    selectedArea = area;
+    currentArea = area;
 
-    document.getElementById("selectedArea").value =
-        area;
+    document.getElementById("areaInput")
+        .value = area;
 
-    document.querySelectorAll(".part-btn")
+    document.querySelectorAll(".part")
         .forEach(b => b.classList.remove("active"));
 
-    if(button){
-        button.classList.add("active");
-    }
+    button.classList.add("active");
 
-    updateSvgSelection();
+    updateMannequin();
 
-    clearCanvas();
+    clearDrawing();
 }
 
 
 /* =========================================================
-   SVG SELECTION
+   MANNEQUIN HIGHLIGHT
 ========================================================= */
 
-function updateSvgSelection(){
+function updateMannequin(){
 
-    document.querySelectorAll(".body-svg path, .body-svg circle, .body-svg rect")
-        .forEach(el => el.classList.remove("selected-svg"));
+    document.querySelectorAll("#mannequin .shape")
+        .forEach(x => x.classList.remove("active"));
 
-
-    const groups = {
+    const map = {
 
         "Head":[
-            "svgHead"
+            "mHead"
         ],
 
         "Neck & Shoulders":[
-            "svgNeck"
+            "mNeck"
         ],
 
         "Chest":[
-            "svgChest"
+            "mChest"
         ],
 
         "Abdomen":[
-            "svgChest"
+            "mChest"
         ],
 
         "Back":[
-            "svgChest"
+            "mChest"
         ],
 
         "Arms":[
-            "svgLeftArm",
-            "svgRightArm",
-            "svgLeftHand",
-            "svgRightHand"
+            "mArmL",
+            "mArmR",
+            "mHandL",
+            "mHandR"
         ],
 
         "Legs":[
-            "svgLeftLeg",
-            "svgRightLeg"
+            "mLegL",
+            "mLegR"
         ],
 
         "Feet":[
-            "svgLeftFoot",
-            "svgRightFoot"
+            "mFootL",
+            "mFootR"
         ]
 
     };
 
-
-    if(groups[selectedArea]){
-
-        groups[selectedArea].forEach(id => {
+    (map[currentArea] || [])
+        .forEach(id => {
 
             const el =
                 document.getElementById(id);
 
             if(el){
-                el.classList.add("selected-svg");
+                el.classList.add("active");
             }
 
         });
 
-    }
 }
 
 
 /* =========================================================
-   INTENSITY
+   SVG DRAWING
 ========================================================= */
 
-function updateIntensity(){
+const drawSvg =
+document.getElementById("drawSvg");
 
-    const value =
-        document.getElementById("intensity").value;
+const drawingGroup =
+document.getElementById("drawingGroup");
 
-    document.getElementById("intensityValue")
-        .textContent = value;
-}
+let drawing = false;
 
-
-/* =========================================================
-   PAIN
-========================================================= */
-
-function selectPain(type,button){
-
-    selectedPain = type;
-
-    document.querySelectorAll(".pain")
-        .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
-}
+let currentPath = null;
 
 
-/* =========================================================
-   CANVAS
-========================================================= */
+/* convert pointer to SVG coordinates */
 
-const canvas =
-    document.getElementById("drawingCanvas");
-
-const ctx =
-    canvas.getContext("2d");
-
-
-function resizeCanvas(){
+function svgPoint(event){
 
     const rect =
-        canvas.getBoundingClientRect();
-
-    const oldCanvas =
-        document.createElement("canvas");
-
-    oldCanvas.width = canvas.width;
-    oldCanvas.height = canvas.height;
-
-    if(canvas.width && canvas.height){
-
-        oldCanvas
-            .getContext("2d")
-            .drawImage(canvas,0,0);
-
-    }
-
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-
-    if(oldCanvas.width && oldCanvas.height){
-
-        ctx.drawImage(
-            oldCanvas,
-            0,
-            0,
-            oldCanvas.width,
-            oldCanvas.height,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-    }
-
-}
-
-setTimeout(resizeCanvas,100);
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-/* =========================================================
-   POSITION
-========================================================= */
-
-function getPosition(event){
-
-    const rect =
-        canvas.getBoundingClientRect();
-
-    let clientX;
-    let clientY;
-
-    if(event.touches){
-
-        clientX =
-            event.touches[0].clientX;
-
-        clientY =
-            event.touches[0].clientY;
-
-    }else{
-
-        clientX =
-            event.clientX;
-
-        clientY =
-            event.clientY;
-
-    }
+        drawSvg.getBoundingClientRect();
 
     return {
 
-        x:clientX - rect.left,
+        x:
+        (event.clientX - rect.left)
+        * 270 / rect.width,
 
-        y:clientY - rect.top
+        y:
+        (event.clientY - rect.top)
+        * 520 / rect.height
 
     };
+
 }
 
 
-/* =========================================================
-   CLIPPING
-========================================================= */
+/* choose clip */
 
-function createClip(){
+function getClip(){
 
-    const w = canvas.width;
-    const h = canvas.height;
+    const map = {
 
-    const scale =
-        Math.min(
-            w / 250,
-            h / 510
-        );
+        "Head":"url(#clipHead)",
 
-    const offsetX =
-        (w - 250 * scale) / 2;
+        "Neck & Shoulders":"url(#clipNeck)",
 
-    const offsetY =
-        (h - 510 * scale) / 2;
+        "Chest":"url(#clipChest)",
 
+        "Abdomen":"url(#clipChest)",
 
-    function path(){
+        "Back":"url(#clipChest)",
 
-        return new Path2D();
+        "Arms":"url(#clipArms)",
 
-    }
+        "Legs":"url(#clipLegs)",
 
+        "Feet":"url(#clipFeet)"
 
-    /* ================= HEAD ================= */
+    };
 
-    if(selectedArea === "Head"){
-
-        const p = path();
-
-        p.arc(
-            offsetX + 125 * scale,
-            offsetY + 45 * scale,
-            38 * scale,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= NECK ================= */
-
-    if(selectedArea === "Neck & Shoulders"){
-
-        const p = path();
-
-        p.roundRect(
-            offsetX + 90 * scale,
-            offsetY + 75 * scale,
-            70 * scale,
-            55 * scale,
-            20 * scale
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= CHEST ================= */
-
-    if(selectedArea === "Chest"){
-
-        const p = path();
-
-        p.roundRect(
-            offsetX + 58 * scale,
-            offsetY + 108 * scale,
-            134 * scale,
-            95 * scale,
-            28 * scale
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= ABDOMEN ================= */
-
-    if(selectedArea === "Abdomen"){
-
-        const p = path();
-
-        p.roundRect(
-            offsetX + 66 * scale,
-            offsetY + 190 * scale,
-            118 * scale,
-            75 * scale,
-            25 * scale
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= BACK ================= */
-
-    if(selectedArea === "Back"){
-
-        const p = path();
-
-        p.roundRect(
-            offsetX + 58 * scale,
-            offsetY + 108 * scale,
-            134 * scale,
-            157 * scale,
-            32 * scale
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= ARMS ================= */
-
-    if(selectedArea === "Arms"){
-
-        const p = path();
-
-        p.roundRect(
-            offsetX + 27 * scale,
-            offsetY + 120 * scale,
-            45 * scale,
-            145 * scale,
-            20 * scale
-        );
-
-        p.roundRect(
-            offsetX + 178 * scale,
-            offsetY + 120 * scale,
-            45 * scale,
-            145 * scale,
-            20 * scale
-        );
-
-        p.arc(
-            offsetX + 42 * scale,
-            offsetY + 282 * scale,
-            19 * scale,
-            0,
-            Math.PI * 2
-        );
-
-        p.arc(
-            offsetX + 208 * scale,
-            offsetY + 282 * scale,
-            19 * scale,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= LEGS ================= */
-
-    if(selectedArea === "Legs"){
-
-        const p = path();
-
-        /*
-           LEFT LEG
-        */
-
-        p.moveTo(
-            offsetX + 79 * scale,
-            offsetY + 252 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 82 * scale,
-            offsetY + 278 * scale,
-            offsetX + 84 * scale,
-            offsetY + 307 * scale,
-            offsetX + 80 * scale,
-            offsetY + 333 * scale
-        );
-
-        p.lineTo(
-            offsetX + 72 * scale,
-            offsetY + 435 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 71 * scale,
-            offsetY + 453 * scale,
-            offsetX + 78 * scale,
-            offsetY + 466 * scale,
-            offsetX + 91 * scale,
-            offsetY + 466 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 104 * scale,
-            offsetY + 466 * scale,
-            offsetX + 109 * scale,
-            offsetY + 453 * scale,
-            offsetX + 110 * scale,
-            offsetY + 437 * scale
-        );
-
-        p.lineTo(
-            offsetX + 120 * scale,
-            offsetY + 334 * scale
-        );
-
-        p.lineTo(
-            offsetX + 125 * scale,
-            offsetY + 270 * scale
-        );
-
-        p.lineTo(
-            offsetX + 125 * scale,
-            offsetY + 252 * scale
-        );
-
-        p.closePath();
-
-
-        /*
-           RIGHT LEG
-        */
-
-        p.moveTo(
-            offsetX + 125 * scale,
-            offsetY + 252 * scale
-        );
-
-        p.lineTo(
-            offsetX + 125 * scale,
-            offsetY + 270 * scale
-        );
-
-        p.lineTo(
-            offsetX + 130 * scale,
-            offsetY + 334 * scale
-        );
-
-        p.lineTo(
-            offsetX + 140 * scale,
-            offsetY + 437 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 141 * scale,
-            offsetY + 453 * scale,
-            offsetX + 146 * scale,
-            offsetY + 466 * scale,
-            offsetX + 159 * scale,
-            offsetY + 466 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 172 * scale,
-            offsetY + 466 * scale,
-            offsetX + 179 * scale,
-            offsetY + 453 * scale,
-            offsetX + 178 * scale,
-            offsetY + 435 * scale
-        );
-
-        p.lineTo(
-            offsetX + 170 * scale,
-            offsetY + 333 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 166 * scale,
-            offsetY + 307 * scale,
-            offsetX + 168 * scale,
-            offsetY + 278 * scale,
-            offsetX + 171 * scale,
-            offsetY + 252 * scale
-        );
-
-        p.closePath();
-
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* ================= FEET ================= */
-
-    if(selectedArea === "Feet"){
-
-        const p = path();
-
-        p.moveTo(
-            offsetX + 72 * scale,
-            offsetY + 430 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 61 * scale,
-            offsetY + 438 * scale,
-            offsetX + 51 * scale,
-            offsetY + 451 * scale,
-            offsetX + 48 * scale,
-            offsetY + 464 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 46 * scale,
-            offsetY + 472 * scale,
-            offsetX + 52 * scale,
-            offsetY + 478 * scale,
-            offsetX + 62 * scale,
-            offsetY + 478 * scale
-        );
-
-        p.lineTo(
-            offsetX + 94 * scale,
-            offsetY + 478 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 104 * scale,
-            offsetY + 478 * scale,
-            offsetX + 109 * scale,
-            offsetY + 471 * scale,
-            offsetX + 110 * scale,
-            offsetY + 461 * scale
-        );
-
-        p.lineTo(
-            offsetX + 110 * scale,
-            offsetY + 443 * scale
-        );
-
-        p.closePath();
-
-
-        p.moveTo(
-            offsetX + 178 * scale,
-            offsetY + 430 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 189 * scale,
-            offsetY + 438 * scale,
-            offsetX + 199 * scale,
-            offsetY + 451 * scale,
-            offsetX + 202 * scale,
-            offsetY + 464 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 204 * scale,
-            offsetY + 472 * scale,
-            offsetX + 198 * scale,
-            offsetY + 478 * scale,
-            offsetX + 188 * scale,
-            offsetY + 478 * scale
-        );
-
-        p.lineTo(
-            offsetX + 156 * scale,
-            offsetY + 478 * scale
-        );
-
-        p.bezierCurveTo(
-            offsetX + 146 * scale,
-            offsetY + 478 * scale,
-            offsetX + 141 * scale,
-            offsetY + 471 * scale,
-            offsetX + 140 * scale,
-            offsetY + 461 * scale
-        );
-
-        p.lineTo(
-            offsetX + 140 * scale,
-            offsetY + 443 * scale
-        );
-
-        p.closePath();
-
-
-        ctx.clip(p);
-
-        return;
-    }
-
-
-    /* DEFAULT */
-
-    ctx.rect(0,0,w,h);
-
-    ctx.clip();
+    return map[currentArea];
 }
 
 
-/* =========================================================
-   DRAW
-========================================================= */
+/* start */
 
-canvas.addEventListener(
+drawSvg.addEventListener(
     "pointerdown",
-    startDrawing
+    function(event){
+
+        event.preventDefault();
+
+        drawing = true;
+
+        const p =
+            svgPoint(event);
+
+        currentPath =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "path"
+            );
+
+        currentPath.setAttribute(
+            "d",
+            `M ${p.x} ${p.y}`
+        );
+
+        currentPath.setAttribute(
+            "stroke",
+            currentTool === "erase"
+            ? "#000000"
+            : getPainColor()
+        );
+
+        currentPath.setAttribute(
+            "stroke-width",
+            currentTool === "erase"
+            ? "28"
+            : "7"
+        );
+
+        currentPath.setAttribute(
+            "opacity",
+            currentTool === "erase"
+            ? "1"
+            : "0.95"
+        );
+
+        currentPath.setAttribute(
+            "clip-path",
+            getClip()
+        );
+
+        if(currentTool === "erase"){
+
+            currentPath.style.mixBlendMode =
+                "destination-out";
+
+        }
+
+        drawingGroup.appendChild(
+            currentPath
+        );
+
+        historyPaths.push(
+            currentPath
+        );
+
+        drawSvg.setPointerCapture(
+            event.pointerId
+        );
+
+    }
 );
 
-canvas.addEventListener(
+
+/* move */
+
+drawSvg.addEventListener(
     "pointermove",
-    draw
+    function(event){
+
+        if(!drawing || !currentPath)
+            return;
+
+        event.preventDefault();
+
+        const p =
+            svgPoint(event);
+
+        const old =
+            currentPath.getAttribute("d");
+
+        currentPath.setAttribute(
+            "d",
+            old +
+            ` L ${p.x} ${p.y}`
+        );
+
+    }
 );
 
-canvas.addEventListener(
+
+/* end */
+
+drawSvg.addEventListener(
     "pointerup",
-    stopDrawing
+    function(){
+
+        drawing = false;
+        currentPath = null;
+
+    }
 );
 
-canvas.addEventListener(
+drawSvg.addEventListener(
     "pointercancel",
-    stopDrawing
-);
+    function(){
 
-canvas.addEventListener(
-    "pointerleave",
-    stopDrawing
-);
-
-
-function startDrawing(event){
-
-    event.preventDefault();
-
-    drawing = true;
-
-    undoHistory.push(
-        ctx.getImageData(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        )
-    );
-
-    if(undoHistory.length > 20){
-        undoHistory.shift();
-    }
-
-    const pos =
-        getPosition(event);
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        pos.x,
-        pos.y
-    );
-}
-
-
-function draw(event){
-
-    if(!drawing) return;
-
-    event.preventDefault();
-
-    const pos =
-        getPosition(event);
-
-    ctx.save();
-
-    /*
-       THIS IS THE IMPORTANT PART:
-       all drawing is clipped to the selected
-       human body region.
-    */
-
-    createClip();
-
-
-    if(currentTool === "erase"){
-
-        ctx.globalCompositeOperation =
-            "destination-out";
-
-        ctx.lineWidth = 24;
-
-    }else{
-
-        ctx.globalCompositeOperation =
-            "source-over";
-
-        ctx.lineWidth = 7;
-
-        const colors = {
-
-            "Severe":"#ff657d",
-
-            "Deep":"#111827",
-
-            "Wave-like":"#65d9ff",
-
-            "Pulsating":"#9b8cff",
-
-            "Burning":"#ffd45c",
-
-            "Tingling":"#64e6a5",
-
-            "Radiating":"#ff8ca1",
-
-            "Other":"#ffffff"
-
-        };
-
-        ctx.strokeStyle =
-            colors[selectedPain] || "#ffffff";
+        drawing = false;
+        currentPath = null;
 
     }
-
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    ctx.lineTo(
-        pos.x,
-        pos.y
-    );
-
-    ctx.stroke();
-
-    ctx.restore();
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        pos.x,
-        pos.y
-    );
-}
+);
 
 
-function stopDrawing(){
+/* =========================================================
+   PAIN COLOR
+========================================================= */
 
-    if(!drawing) return;
+function getPainColor(){
 
-    drawing = false;
+    const colors = {
 
-    ctx.beginPath();
+        "Severe":"#ff536d",
 
-    ctx.globalCompositeOperation =
-        "source-over";
+        "Deep":"#10151f",
+
+        "Wave-like":"#46d9ff",
+
+        "Pulsating":"#a58cff",
+
+        "Burning":"#ffd34f",
+
+        "Tingling":"#57e69b",
+
+        "Radiating":"#ff83a0",
+
+        "Other":"#ffffff"
+
+    };
+
+    return colors[currentPain];
 }
 
 
@@ -2446,52 +1676,59 @@ function stopDrawing(){
    TOOLS
 ========================================================= */
 
-function setTool(tool,button){
+function changeTool(tool,button){
 
     currentTool = tool;
 
     document.querySelectorAll(".tool")
-        .forEach(b => b.classList.remove("active"));
+        .forEach(x => x.classList.remove("active"));
 
     button.classList.add("active");
 }
 
 
-function undo(){
+function undoDrawing(){
 
-    if(undoHistory.length === 0){
+    if(historyPaths.length === 0)
         return;
-    }
 
-    const previous =
-        undoHistory.pop();
+    const last =
+        historyPaths.pop();
 
-    ctx.putImageData(
-        previous,
-        0,
-        0
-    );
+    last.remove();
 }
 
 
-function clearCanvas(){
+function clearDrawing(){
 
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
+    drawingGroup.innerHTML = "";
 
-    undoHistory = [];
+    historyPaths = [];
+
 }
 
 
 /* =========================================================
-   SAVE ENTRY
+   PAIN
 ========================================================= */
 
-function saveEntry(){
+function choosePain(type,button){
+
+    currentPain = type;
+
+    document.querySelectorAll(".pain")
+        .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+function saveSymptom(){
 
     const entry = {
 
@@ -2499,13 +1736,13 @@ function saveEntry(){
 
         date:new Date().toLocaleString(),
 
-        area:selectedArea,
+        area:currentArea,
 
         intensity:Number(
             document.getElementById("intensity").value
         ),
 
-        painType:selectedPain,
+        type:currentPain,
 
         duration:
             document.getElementById("duration").value,
@@ -2526,20 +1763,19 @@ function saveEntry(){
 
 
     localStorage.setItem(
-        "symptomCanvasEntries",
+        "symptomCanvasData",
         JSON.stringify(entries)
     );
 
 
     document.getElementById("notes").value = "";
 
-    clearCanvas();
+    clearDrawing();
 
-    updateEverything();
+    refresh();
 
-    generateReport();
+    alert("Symptom saved. AI report updated.");
 
-    showToast("Symptom saved successfully");
 }
 
 
@@ -2549,58 +1785,52 @@ function saveEntry(){
 
 function renderHistory(){
 
-    const container =
+    const box =
         document.getElementById("historyList");
 
     if(entries.length === 0){
 
-        container.innerHTML = `
-            <div class="empty">
-                <div class="empty-icon">◌</div>
-                No symptoms recorded yet.
-            </div>
-        `;
+        box.innerHTML =
+        `<div class="empty">
+            No symptoms recorded yet.
+        </div>`;
 
         return;
     }
 
 
-    container.innerHTML =
-        entries.map(entry => `
+    box.innerHTML =
+    entries.map(e => `
 
         <div class="entry">
 
             <div>
 
                 <div class="entry-title">
-                    ${escapeHTML(entry.area)}
+                    ${safe(e.area)}
                     ·
-                    ${escapeHTML(entry.painType)}
+                    ${safe(e.type)}
                 </div>
 
-                <div class="entry-meta">
-                    ${escapeHTML(entry.date)}
+                <div class="meta">
+                    ${safe(e.date)}
                 </div>
 
-                <div class="entry-meta">
-                    Duration:
-                    ${escapeHTML(entry.duration)}
+                <div class="meta">
+                    Duration: ${safe(e.duration)}
                     ·
-                    Frequency:
-                    ${escapeHTML(entry.frequency)}
+                    Frequency: ${safe(e.frequency)}
                 </div>
 
-                <div class="entry-meta">
-                    Trigger:
-                    ${escapeHTML(entry.trigger)}
+                <div class="meta">
+                    Trigger: ${safe(e.trigger)}
                 </div>
 
                 ${
-                    entry.notes
+                    e.notes
                     ?
-                    `<div class="entry-meta">
-                        Notes:
-                        ${escapeHTML(entry.notes)}
+                    `<div class="meta">
+                        Notes: ${safe(e.notes)}
                     </div>`
                     :
                     ""
@@ -2608,13 +1838,14 @@ function renderHistory(){
 
             </div>
 
-            <div class="intensity">
-                ${entry.intensity}/10
+            <div class="score">
+                ${e.intensity}/10
             </div>
 
         </div>
 
-        `).join("");
+    `).join("");
+
 }
 
 
@@ -2624,14 +1855,66 @@ function renderHistory(){
 
 function renderRecent(){
 
-    const container =
-        document.getElementById("recentList");
+    const box =
+        document.getElementById("recent");
 
     if(entries.length === 0){
 
-        container.innerHTML = `
+        box.innerHTML =
+        `<div class="empty">
+            No symptoms yet.
+        </div>`;
+
+        return;
+    }
+
+
+    box.innerHTML =
+    entries.slice(0,5).map(e => `
+
+        <div class="entry">
+
+            <div>
+
+                <div class="entry-title">
+                    ${safe(e.area)}
+                </div>
+
+                <div class="meta">
+                    ${safe(e.type)}
+                </div>
+
+                <div class="meta">
+                    ${safe(e.date)}
+                </div>
+
+            </div>
+
+            <div class="score">
+                ${e.intensity}/10
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   AI REPORT
+========================================================= */
+
+function generateAIReport(){
+
+    const box =
+        document.getElementById("reportBox");
+
+    if(entries.length === 0){
+
+        box.innerHTML = `
             <div class="empty">
-                No symptoms recorded yet.
+                Record a symptom first to generate an AI report.
             </div>
         `;
 
@@ -2639,172 +1922,207 @@ function renderRecent(){
     }
 
 
-    container.innerHTML =
-        entries.slice(0,5).map(entry => `
+    const latest = entries[0];
 
-        <div class="entry">
 
-            <div>
+    const average =
+        entries.reduce(
+            (sum,e) => sum + e.intensity,
+            0
+        ) / entries.length;
 
-                <div class="entry-title">
-                    ${escapeHTML(entry.area)}
-                </div>
 
-                <div class="entry-meta">
-                    ${escapeHTML(entry.painType)}
-                </div>
+    const highest =
+        Math.max(
+            ...entries.map(e => e.intensity)
+        );
 
-                <div class="entry-meta">
-                    ${escapeHTML(entry.date)}
-                </div>
 
-            </div>
+    const areas = {};
 
-            <div class="intensity">
-                ${entry.intensity}/10
-            </div>
+    entries.forEach(e => {
+
+        areas[e.area] =
+        (areas[e.area] || 0) + 1;
+
+    });
+
+
+    const mainArea =
+        Object.entries(areas)
+        .sort((a,b) => b[1] - a[1])[0][0];
+
+
+    const types = {};
+
+    entries.forEach(e => {
+
+        types[e.type] =
+        (types[e.type] || 0) + 1;
+
+    });
+
+
+    const mainType =
+        Object.entries(types)
+        .sort((a,b) => b[1] - a[1])[0][0];
+
+
+    box.innerHTML = `
+
+        <h3>AI Symptom Report</h3>
+
+
+        <div class="report-section">
+
+            <strong>Latest symptom</strong><br>
+
+            Location:
+            ${safe(latest.area)}<br>
+
+            Type:
+            ${safe(latest.type)}<br>
+
+            Intensity:
+            ${latest.intensity}/10<br>
+
+            Duration:
+            ${safe(latest.duration)}<br>
+
+            Frequency:
+            ${safe(latest.frequency)}<br>
+
+            Possible trigger:
+            ${safe(latest.trigger)}
 
         </div>
 
-        `).join("");
+
+        <div class="report-section">
+
+            <strong>History analysis</strong><br>
+
+            Total recorded entries:
+            ${entries.length}<br>
+
+            Average intensity:
+            ${average.toFixed(1)}/10<br>
+
+            Highest recorded intensity:
+            ${highest}/10<br>
+
+            Most frequently tracked area:
+            ${safe(mainArea)}<br>
+
+            Most frequently reported symptom type:
+            ${safe(mainType)}
+
+        </div>
+
+
+        <div class="report-section">
+
+            <strong>Additional information</strong><br>
+
+            ${
+                latest.notes
+                ?
+                safe(latest.notes)
+                :
+                "No additional notes were provided."
+            }
+
+        </div>
+
+
+        <div class="report-note">
+
+            This report organizes information provided by the user.
+            It does not diagnose a medical condition.
+
+        </div>
+
+    `;
+
 }
 
 
 /* =========================================================
-   CHART
+   INSIGHTS
 ========================================================= */
 
-function renderChart(){
+function renderInsights(){
 
-    const chart =
-        document.getElementById("chart");
+    const bars =
+        document.getElementById("bars");
+
+    const overview =
+        document.getElementById("overview");
+
 
     if(entries.length === 0){
 
-        chart.innerHTML = `
-            <div class="empty">
-                No data available.
-            </div>
-        `;
+        bars.innerHTML =
+        `<div class="empty">No data yet.</div>`;
+
+        overview.innerHTML =
+        `<div class="empty">No data yet.</div>`;
 
         return;
     }
 
 
     const data =
-        [...entries]
-        .reverse()
-        .slice(-10);
+        entries.slice(0,10).reverse();
 
 
-    chart.innerHTML =
-        data.map(entry => {
+    bars.innerHTML =
+    data.map(e => `
 
-            const height =
-                entry.intensity * 10;
+        <div class="barbox">
 
-            return `
+            <div class="bar"
+                 style="height:${e.intensity * 10}%">
 
-            <div class="bar-column">
-
-                <div>
-
-                    <div class="bar"
-                         style="height:${height}%">
-
-                        <div class="bar-value">
-                            ${entry.intensity}
-                        </div>
-
-                    </div>
-
-                    <div class="bar-label">
-                        ${escapeHTML(
-                            entry.area.substring(0,6)
-                        )}
-                    </div>
-
-                </div>
+                <span>
+                    ${e.intensity}
+                </span>
 
             </div>
 
-            `;
+        </div>
 
-        }).join("");
-}
-
-
-/* =========================================================
-   OVERVIEW
-========================================================= */
-
-function renderOverview(){
-
-    const container =
-        document.getElementById("overview");
-
-    if(entries.length === 0){
-
-        container.innerHTML = `
-            <div class="empty">
-                No data yet.
-            </div>
-        `;
-
-        return;
-    }
+    `).join("");
 
 
-    const average =
-        (
-            entries.reduce(
-                (sum,e) =>
-                    sum + e.intensity,
-                0
-            ) / entries.length
-        ).toFixed(1);
+    const avg =
+        entries.reduce(
+            (sum,e) => sum + e.intensity,
+            0
+        ) / entries.length;
 
 
-    const highest =
+    const max =
         Math.max(
-            ...entries.map(
-                e => e.intensity
-            )
+            ...entries.map(e => e.intensity)
         );
 
 
-    const areaCounts = {};
-
-    entries.forEach(entry => {
-
-        areaCounts[entry.area] =
-            (areaCounts[entry.area] || 0) + 1;
-
-    });
-
-
-    const mostTracked =
-        Object.entries(areaCounts)
-            .sort((a,b) => b[1]-a[1])[0][0];
-
-
-    container.innerHTML = `
+    overview.innerHTML = `
 
         <div class="entry">
 
             <div>
-
                 <div class="entry-title">
                     Total entries
                 </div>
 
-                <div class="entry-meta">
+                <div class="meta">
                     Recorded symptoms
                 </div>
-
             </div>
 
-            <div class="intensity">
+            <div class="score">
                 ${entries.length}
             </div>
 
@@ -2814,19 +2132,13 @@ function renderOverview(){
         <div class="entry">
 
             <div>
-
                 <div class="entry-title">
                     Average intensity
                 </div>
-
-                <div class="entry-meta">
-                    Across all entries
-                </div>
-
             </div>
 
-            <div class="intensity">
-                ${average}/10
+            <div class="score">
+                ${avg.toFixed(1)}/10
             </div>
 
         </div>
@@ -2835,273 +2147,41 @@ function renderOverview(){
         <div class="entry">
 
             <div>
-
                 <div class="entry-title">
                     Highest intensity
                 </div>
-
-                <div class="entry-meta">
-                    Maximum recorded value
-                </div>
-
             </div>
 
-            <div class="intensity">
-                ${highest}/10
-            </div>
-
-        </div>
-
-
-        <div class="entry">
-
-            <div>
-
-                <div class="entry-title">
-                    Most tracked area
-                </div>
-
-                <div class="entry-meta">
-                    ${escapeHTML(mostTracked)}
-                </div>
-
+            <div class="score">
+                ${max}/10
             </div>
 
         </div>
 
     `;
+
 }
 
 
 /* =========================================================
-   AI REPORT
+   REFRESH
 ========================================================= */
 
-function generateReport(){
+function refresh(){
 
-    const ai =
-        document.getElementById("aiReport");
-
-    const doctor =
-        document.getElementById("doctorReport");
-
-
-    if(entries.length === 0){
-
-        ai.innerHTML = `
-            <div class="empty">
-                <div class="empty-icon">✦</div>
-                Record a symptom to generate a summary.
-            </div>
-        `;
-
-        doctor.innerHTML = `
-            <div class="empty">
-                No report available yet.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    const latest =
-        entries[0];
-
-
-    const average =
-        (
-            entries.reduce(
-                (sum,e) =>
-                    sum + e.intensity,
-                0
-            ) / entries.length
-        ).toFixed(1);
-
-
-    const areas =
-        [...new Set(
-            entries.map(e => e.area)
-        )];
-
-
-    ai.innerHTML = `
-
-        <div class="report-title">
-            AI Symptom Summary
-        </div>
-
-        <p>
-            The latest recorded symptom was reported in
-            <strong>
-                ${escapeHTML(latest.area)}
-            </strong>
-            with an intensity of
-            <strong>
-                ${latest.intensity}/10
-            </strong>.
-        </p>
-
-        <p>
-            The reported symptom type was
-            <strong>
-                ${escapeHTML(latest.painType)}
-            </strong>.
-        </p>
-
-        <p>
-            Duration:
-            <strong>
-                ${escapeHTML(latest.duration)}
-            </strong>.
-        </p>
-
-        <p>
-            Frequency:
-            <strong>
-                ${escapeHTML(latest.frequency)}
-            </strong>.
-        </p>
-
-        <p>
-            Possible trigger:
-            <strong>
-                ${escapeHTML(latest.trigger)}
-            </strong>.
-        </p>
-
-        ${
-            latest.notes
-            ?
-            `<p>
-                Additional notes:
-                <strong>
-                    ${escapeHTML(latest.notes)}
-                </strong>.
-            </p>`
-            :
-            ""
-        }
-
-        <p>
-            The current history contains
-            <strong>${entries.length}</strong>
-            recorded entries with an average intensity of
-            <strong>${average}/10</strong>.
-        </p>
-
-        <p>
-            Areas represented in the history:
-            <strong>
-                ${areas.map(escapeHTML).join(", ")}
-            </strong>.
-        </p>
-
-        <div class="report-note">
-            This summary organizes user-provided information.
-            It does not diagnose medical conditions.
-        </div>
-
-    `;
-
-
-    doctor.innerHTML = `
-
-        <div class="report-title">
-            Doctor-friendly summary
-        </div>
-
-        <p>
-            <strong>Area:</strong>
-            ${escapeHTML(latest.area)}
-        </p>
-
-        <p>
-            <strong>Intensity:</strong>
-            ${latest.intensity}/10
-        </p>
-
-        <p>
-            <strong>Type:</strong>
-            ${escapeHTML(latest.painType)}
-        </p>
-
-        <p>
-            <strong>Duration:</strong>
-            ${escapeHTML(latest.duration)}
-        </p>
-
-        <p>
-            <strong>Frequency:</strong>
-            ${escapeHTML(latest.frequency)}
-        </p>
-
-        <p>
-            <strong>Possible trigger:</strong>
-            ${escapeHTML(latest.trigger)}
-        </p>
-
-        ${
-            latest.notes
-            ?
-            `<p>
-                <strong>Notes:</strong>
-                ${escapeHTML(latest.notes)}
-            </p>`
-            :
-            ""
-        }
-
-        <div class="report-note">
-            Generated from user-provided symptom tracking data.
-        </div>
-
-    `;
-}
-
-
-/* =========================================================
-   EVERYTHING
-========================================================= */
-
-function updateEverything(){
-
-    document.getElementById("entryCount")
+    document.getElementById("count")
         .textContent = entries.length;
 
     renderRecent();
 
     renderHistory();
 
-    renderChart();
+    renderInsights();
 
-    renderOverview();
+    generateAIReport();
 
-    generateReport();
+    updateMannequin();
 
-    updateSvgSelection();
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent =
-        message;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    },2200);
 }
 
 
@@ -3109,14 +2189,15 @@ function showToast(message){
    SECURITY
 ========================================================= */
 
-function escapeHTML(value){
+function safe(text){
 
-    return String(value)
+    return String(text)
         .replaceAll("&","&amp;")
         .replaceAll("<","&lt;")
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
+
 }
 
 
@@ -3124,9 +2205,7 @@ function escapeHTML(value){
    START
 ========================================================= */
 
-updateSvgSelection();
-
-updateEverything();
+refresh();
 
 </script>
 
